@@ -3,7 +3,7 @@ import mui, { SelectField } from 'material-ui';
 
 let ThemeManager = new mui.Styles.ThemeManager();
 
-const requireMessage = 'This field is required';
+const LinkedStateMixin = React.addons.LinkedStateMixin;
 
 export default class Demo extends Component {
 
