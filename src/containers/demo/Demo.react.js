@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
-import TextField from '../../components/TextField.react';
+import BasicInfo from '../basicInfo/Name.react';
 
 export default class Demo extends Component {
 
   render() {
-    const props = {
-      required: true,
-      hint: 'Nguyen',
-      label: 'Ho'
-    }
     return (
-      <TextField {...props} />
+      <div>
+        <BasicInfo ref="BasicInfo"/>
+        <button onClick={this.getData}> Show </button>
+      </div>
     );
+  }
+
+  getData = () => {
+    const data = this.refs.BasicInfo.getData();
+    console.log(data);
   }
 }

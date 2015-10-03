@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import mui, { RaisedButton, TextField} from 'material-ui';
+import mui, { TextField} from 'material-ui';
 
 let ThemeManager = new mui.Styles.ThemeManager();
 
@@ -29,30 +29,31 @@ export default class Demo extends Component {
   }
 
   render() {
-    console.log(this.props.required);
+    const True = true;
     return (
-      <div>
-        <TextField
-          ref="TextField"
-          hintText={this.props.hint || ''}
-          errorText={this.state.isRequired && this.state.requireMessage}
-          floatingLabelText={this.props.label || ''}
-          onChange={this.handleIput}
-          onFocus={this.onFocus}
-        />
-      </div>
+      <TextField
+        ref="TextField"
+        hintText={this.props.hint || ''}
+        errorText={this.state.isRequired && this.state.requireMessage}
+        floatingLabelText={this.props.label || ''}
+        onChange={this.handleIput}
+        onFocus={this.onFocus}
+        fullWidth={True}
+      />
     );
   }
 
   handleIput = (event) => {
-    console.log('fuck');
-    let input = this.refs.TextField.getValue();
-    console.log(input);
+    let input = this.refs.TextField.getValue().trim();
     if (input !== '') {
       this.setState({requireMessage : ''});
     } else {
       this.setState({requireMessage : requireMessage});
     }
+  }
+
+  getValue = () => {
+    return this.refs.TextField.getValue().trim();
   }
 
   onFocus = (event) => {
