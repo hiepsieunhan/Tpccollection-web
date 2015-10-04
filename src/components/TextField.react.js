@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import mui, { TextField} from 'material-ui';
+import mui, { TextField as MuiTextField} from 'material-ui';
 
-let ThemeManager = new mui.Styles.ThemeManager();
-
+const ThemeManager = require('material-ui/lib/styles/theme-manager');
 const requireMessage = 'This field is required';
 
-export default class Demo extends Component {
+export default class TextField extends Component {
 
   static propTypes = {
     required: PropTypes.bool.isRequired,
@@ -18,23 +17,23 @@ export default class Demo extends Component {
     isRequired: false
   };
 
-  static childContextTypes = {
+  /*static childContextTypes = {
     muiTheme: PropTypes.object
   }
 
   getChildContext() {
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
+      muiTheme: this.state.muiTheme
     }
-  }
+  }*/
 
   render() {
     const True = true;
     return (
-      <TextField
+      <MuiTextField
         ref="TextField"
         hintText={this.props.hint || ''}
-        errorText={this.state.isRequired && this.state.requireMessage}
+        errorText={this.state.isRequired ? this.state.requireMessage : ''}
         floatingLabelText={this.props.label || ''}
         onChange={this.handleIput}
         onFocus={this.onFocus}
