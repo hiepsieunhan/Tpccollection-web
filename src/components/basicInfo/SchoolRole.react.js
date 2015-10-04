@@ -25,7 +25,7 @@ export default class TextField extends Component {
     });
 
     return (
-        <List subheader="Chức vụ tại trường/lớp">
+        <List subheader="Chức vụ tại trường, lớp">
           {listItems}
         </List>
     );

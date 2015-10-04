@@ -30,7 +30,6 @@ export default class BasicInfo extends Component {
     const data = initData();
     const style = {
       root: {
-        width: '60%'
       },
       personalInfo: {
         'marginLeft': '20px'
