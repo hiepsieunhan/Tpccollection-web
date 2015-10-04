@@ -7,6 +7,7 @@ const requireMessage = 'This field is required';
 export default class TextField extends Component {
 
   static propTypes = {
+    onBlur: PropTypes.func,
     required: PropTypes.bool.isRequired,
     label: PropTypes.string,
     hint: PropTypes.string
@@ -16,16 +17,6 @@ export default class TextField extends Component {
     requireMessage: requireMessage,
     isRequired: false
   };
-
-  /*static childContextTypes = {
-    muiTheme: PropTypes.object
-  }
-
-  getChildContext() {
-    return {
-      muiTheme: this.state.muiTheme
-    }
-  }*/
 
   render() {
     const True = true;
@@ -37,6 +28,7 @@ export default class TextField extends Component {
         floatingLabelText={this.props.label || ''}
         onChange={this.handleIput}
         onFocus={this.onFocus}
+        onBlur={this.onBlur}
         fullWidth={True}
       />
     );
@@ -58,6 +50,12 @@ export default class TextField extends Component {
   onFocus = (event) => {
     if (!this.state.isRequired && this.props.required) {
         this.setState({isRequired: true});
+    }
+  }
+
+  onBlur = (event) => {
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
     }
   }
 }
