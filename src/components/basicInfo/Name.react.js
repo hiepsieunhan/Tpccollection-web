@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TextField from '../../components/TextField.react';
 
-export default class Demo extends Component {
+export default class Name extends Component {
 
   render() {
     const props = {
@@ -23,14 +23,14 @@ export default class Demo extends Component {
 
     const style = {
       ul: {
-        'list-style-type': 'none',
+        'listStyleType': 'none',
         'padding': 0
       },
       li: {
         'display': 'inline-block',
         'width': '30%',
-        'vertical-align': 'middle',
-        'margin-right': '3%'
+        'verticalAlign': 'middle',
+        'marginRight': '3%'
       }
     }
 

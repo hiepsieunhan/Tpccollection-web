@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Name from './Name.react';
 import SelectField from '../SelectField.react';
+import SchoolRole from './SchoolRole.react';
 import {DatePicker} from 'material-ui';
 
 const initData = () => {
@@ -12,8 +13,6 @@ const initData = () => {
     let year = i + '-' + (i + 3);
     data.years.push({payload: year, text: year});
   }
-
-  console.log(data.years);
 
   data.classes = [
     {payload: 'Toan', text: 'Toan'},
@@ -31,15 +30,26 @@ export default class BasicInfo extends Component {
     const data = initData();
     const style = {
       root: {
-        width: '50%'
+        width: '60%'
+      },
+      personalInfo: {
+        'marginLeft': '20px'
+      },
+      schoolRole: {
+        'marginTop': '30px'
       }
     }
     return (
       <div style={style.root}>
-        <Name ref="Name"/>
-        <SelectField ref="Year" menuItems={data.years} label="Niên Khóa"/>
-        <DatePicker ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
-        <SelectField ref="Class" menuItems={data.classes} label="Lớp"/>
+        <div style={style.personalInfo}>
+          <Name ref="Name"/>
+          <SelectField ref="Year" menuItems={data.years} label="Niên Khóa"/>
+          <DatePicker ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
+          <SelectField ref="Class" menuItems={data.classes} label="Lớp"/>
+        </div>
+        <div style={style.schoolRole}>
+          <SchoolRole ref="SchoolRole"/>
+        </div>
       </div>
     );
   }
@@ -49,12 +59,14 @@ export default class BasicInfo extends Component {
     let year = this.refs.Year.getValue();
     let birthDate = this.parseDateToString(this.refs.BirthDate.getDate());
     let mClass = this.refs.Class.getValue();
+    let roles = this.refs.SchoolRole.getData();
     let data = {
       data: {
         name: name.data,
         year: year,
         birthDate: birthDate,
-        class: mClass
+        class: mClass,
+        roles: roles
       },
       isValid: (year && birthDate && mClass && name.isValid ? true : false)
     }

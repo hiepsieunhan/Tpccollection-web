@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import mui, { TextField as MuiTextField} from 'material-ui';
 
-const ThemeManager = require('material-ui/lib/styles/theme-manager');
 const requireMessage = 'This field is required';
 
 export default class TextField extends Component {
