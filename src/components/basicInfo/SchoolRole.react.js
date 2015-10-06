@@ -13,9 +13,9 @@ export default class TextField extends Component {
   render() {
 
     const items = [
-      {payload: 'lop truong', text: 'Lớp trưởng'},
-      {payload: 'lop pho', text: 'Lớp phó'},
-      {payload: 'bi thu', text: 'Bí thư'}
+      {payload: 'lopTruong', text: 'Lớp trưởng'},
+      {payload: 'lopPho', text: 'Lớp phó'},
+      {payload: 'biThu', text: 'Bí thư'}
     ];
 
     const listItems = items.map(item => {

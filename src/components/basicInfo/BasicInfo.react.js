@@ -27,28 +27,37 @@ const initData = () => {
 export default class BasicInfo extends Component {
 
   render() {
+    const True = true;
     const data = initData();
     const style = {
       root: {
+        padding: '20px'
       },
-      personalInfo: {
-        'marginLeft': '20px'
+      ul: {
+        'listStyleType': 'none',
+        'padding': 0
       },
-      schoolRole: {
-        'marginTop': '30px'
+      li: {
+        'display': 'inline-block',
+        'width': '50%',
+        'verticalAlign': 'middle'
       }
     }
+
     return (
       <div style={style.root}>
-        <div style={style.personalInfo}>
-          <Name ref="Name"/>
-          <SelectField ref="Year" menuItems={data.years} label="Niên Khóa"/>
-          <DatePicker ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
-          <SelectField ref="Class" menuItems={data.classes} label="Lớp"/>
-        </div>
-        <div style={style.schoolRole}>
-          <SchoolRole ref="SchoolRole"/>
-        </div>
+        <Name ref="Name"/>
+        <ul style={style.ul}>
+          <li style={{...style.li, width: '30%', marginRight: '20%'}}>
+            <SelectField ref="Year" menuItems={data.years} label="Niên Khóa" />
+            <DatePicker fullWidth={True} ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
+            <SelectField ref="Class" menuItems={data.classes} label="Lớp"/>
+          </li>
+          <li style={style.li}>
+            <SchoolRole ref="SchoolRole"/>
+          </li>
+
+        </ul>
       </div>
     );
   }
