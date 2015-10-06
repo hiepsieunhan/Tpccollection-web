@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import BasicInfo from '../../components/basicInfo/BasicInfo.react';
 import CardContainer from '../../components/CardContainer.react';
 
-export default class Demo extends Component {
+export default class BasicInfoDemo extends Component {
 
   render() {
     return (

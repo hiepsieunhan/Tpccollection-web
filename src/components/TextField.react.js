@@ -7,7 +7,8 @@ export default class TextField extends Component {
 
   static propTypes = {
     onBlur: PropTypes.func,
-    required: PropTypes.bool.isRequired,
+    required: PropTypes.bool,
+    multiLine: PropTypes.bool,
     label: PropTypes.string,
     hint: PropTypes.string
   };
@@ -29,6 +30,7 @@ export default class TextField extends Component {
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         fullWidth={True}
+        multiLine={this.props.multiLine}
       />
     );
   }

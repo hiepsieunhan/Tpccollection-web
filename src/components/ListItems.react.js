@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Award from './Award.react';
-import Utils from '../../utils/supportedFuncs';
+import Award from './award/Award.react';
+import Utils from '../utils/supportedFuncs';
 
 console.log(Utils);
 
