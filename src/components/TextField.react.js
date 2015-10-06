@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import mui, { TextField as MuiTextField} from 'material-ui';
 
 const requireMessage = 'This field is required';
+const formatErrMessage = 'The format is not correct';
 
 export default class TextField extends Component {
 
@@ -10,11 +11,13 @@ export default class TextField extends Component {
     required: PropTypes.bool,
     multiLine: PropTypes.bool,
     label: PropTypes.string,
-    hint: PropTypes.string
+    hint: PropTypes.string,
+    validate: PropTypes.func
   };
 
   state = {
     requireMessage: requireMessage,
+    formatErrMessage: '',
     isRequired: false
   };
 
@@ -24,7 +27,7 @@ export default class TextField extends Component {
       <MuiTextField
         ref="TextField"
         hintText={this.props.hint || ''}
-        errorText={this.state.isRequired ? this.state.requireMessage : ''}
+        errorText={(this.state.isRequired ? this.state.requireMessage : '') || this.state.formatErrMessage}
         floatingLabelText={this.props.label || ''}
         onChange={this.handleIput}
         onFocus={this.onFocus}
@@ -36,12 +39,16 @@ export default class TextField extends Component {
   }
 
   handleIput = (event) => {
-    let input = this.refs.TextField.getValue().trim();
+    const input = this.refs.TextField.getValue().trim();
     if (input !== '') {
       this.setState({requireMessage : ''});
     } else {
       this.setState({requireMessage : requireMessage});
     }
+
+    if (!this.props.validate) return;
+    const formatErr = this.props.validate(input) ? '' : formatErrMessage;
+    this.setState({formatErrMessage: formatErr});
   }
 
   getValue = () => {

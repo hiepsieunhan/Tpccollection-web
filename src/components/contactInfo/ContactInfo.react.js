@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TextField from '../TextField.react';
+import Utils from '../../utils/supportedFuncs';
 
 export default class BasicInfo extends Component {
 
@@ -8,11 +9,13 @@ export default class BasicInfo extends Component {
       email: {
         required: true,
         label: 'Địa chỉ email',
-        hint: 'example@gmail.com'
+        hint: 'example@gmail.com',
+        validate: Utils.validateEmail
       },
       phone: {
         label: 'Số điện thoại',
-        hint: '01646616936'
+        hint: '01646616936',
+        validate: Utils.validatePhone
       },
       address: {
         required: true,
