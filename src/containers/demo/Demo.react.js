@@ -1,7 +1,7 @@
 ﻿import React, {Component} from 'react';
 import BasicInfo from '../../components/basicInfo/BasicInfo.react';
 import CardContainer from '../../components/CardContainer.react';
-import Award from '../../components/award/Award.react';
+import AwardList from '../../components/award/AwardList.react';
 
 export default class Demo extends Component {
 
@@ -9,7 +9,7 @@ export default class Demo extends Component {
     return (
       <div style={{width: '60%'}}>
         <CardContainer title="Title">
-          <Award ref="Award"/>
+          <AwardList ref="AwardList"/>
         </CardContainer>
         <button onClick={this.getData}> Show </button>
       </div>
@@ -17,7 +17,7 @@ export default class Demo extends Component {
   }
 
   getData = () => {
-    const data = this.refs.Award.getData();
+    const data = this.refs.AwardList.getData();
     console.log(data);
     return data;
   }

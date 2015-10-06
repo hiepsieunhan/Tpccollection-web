@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React, {PropTypes, Component} from 'react';
 import SelectField from '../SelectField.react';
-import {RaisedButton} from 'material-ui';
 
 var getListYear = () => {
   let startYear = 1970, endYear = (new Date()).getFullYear();
@@ -15,6 +14,10 @@ var getListYear = () => {
 }
 
 export default class Award extends Component {
+
+  static propTypes = {
+    onDelete: PropTypes.func.isRequired
+  }
 
   state = {
     awards: [],
@@ -76,14 +79,14 @@ export default class Award extends Component {
         <li style={{...style.li, width: '15%'}}>
           <SelectField ref="Year" menuItems={data.years} label="Năm"/>
         </li>
-        <li style={{...style.li, width: '20%'}}>
+        <li style={{...style.li, width: '25%'}}>
           <SelectField ref="Subject" menuItems={this.state.subjects} label="Môn thi"/>
         </li>
-        <li style={{...style.li, width: '20%'}}>
+        <li style={{...style.li, width: '25%'}}>
           <SelectField ref="Award" menuItems={this.state.awards} label="Giải thuởng"/>
         </li>
         <li style={{...style.li, width: '10%'}}>
-          <RaisedButton label="Delete" primary={True} />
+          <button onClick={this.props.onDelete}> Delete </button>
         </li>
       </ul>
     );
