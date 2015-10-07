@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import Award from './Award.react';
 import HighSchoolCA from './HighSchoolCA.react';
+import Work from './Work.react';
 import Utils from '../../utils/supportedFuncs';
 
 export default class ItemList extends Component {
@@ -8,7 +9,8 @@ export default class ItemList extends Component {
   static propTypes = {
     type: PropTypes.oneOf([
       'Award',
-      'HighSchoolCA'
+      'HighSchoolCA',
+      'Work'
     ]).isRequired
   }
 
@@ -24,6 +26,7 @@ export default class ItemList extends Component {
           switch (this.props.type) {
             case ('Award'): return <Award ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
             case ('HighSchoolCA'): return <HighSchoolCA ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
+            case ('Work'): return <Work ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
           }
         })}
       </div>

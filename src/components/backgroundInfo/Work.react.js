@@ -3,7 +3,7 @@ import SelectField from '../SelectField.react';
 import TextField from '../TextField.react';
 import Utils from '../../utils/supportedFuncs';
 
-export default class HighSchoolCA extends Component {
+export default class Work extends Component {
 
   static propTypes = {
     onDelete: PropTypes.func.isRequired
@@ -35,24 +35,40 @@ export default class HighSchoolCA extends Component {
         menuItems: data.years,
         label: 'Tới năm'
       },
-      description: {
+      company: {
         required: true,
         multiLine: true,
-        label: 'Hoạt động tham gia'
+        hint: 'Ngân hàng ABC',
+        label: 'Nơi làm việc'
+      },
+      major: {
+        multiLine: true,
+        hint: 'Kế toán',
+        label: 'Chuyên ngành'
+      },
+      position: {
+        multiLine: true,
+        hint: 'Nhân viên',
+        label: 'Vị trí'
       }
-
     }
 
     return (
       <ul style={style.ul}>
-        <li style={{...style.li, width: '15%'}}>
-          <SelectField ref="StartYear" {...props.startYear} />
+        <li style={{...style.li, width: '13%'}}>
+          <SelectField ref="StartYear" {...props.startYear}/>
+        </li>
+        <li style={{...style.li, width: '13%'}}>
+          <SelectField ref="EndYear" {...props.endYear}/>
+        </li>
+        <li style={{...style.li, width: '20%'}}>
+          <TextField ref="Company" {...props.company}/>
         </li>
         <li style={{...style.li, width: '15%'}}>
-          <SelectField ref="EndYear" {...props.endYear} />
+          <TextField ref="Major" {...props.major}/>
         </li>
-        <li style={{...style.li, width: '50%'}}>
-          <TextField ref="Description" {...props.description}/>
+        <li style={{...style.li, width: '15%'}}>
+          <TextField ref="Position" {...props.position}/>
         </li>
         <li style={{...style.li, width: '10%'}}>
           <button onClick={this.props.onDelete}> Delete </button>
@@ -64,14 +80,18 @@ export default class HighSchoolCA extends Component {
   getData = () => {
     const startYear = this.refs.StartYear.getValue(),
         endYear = this.refs.EndYear.getValue(),
-        description = this.refs.Description.getValue();
+        company = this.refs.Company.getValue(),
+        position = this.refs.Position.getValue(),
+        major = this.refs.Major.getValue();
       return {
         data: {
           startYear: startYear,
           endYear: endYear,
-          description: description
+          company: company,
+          position: position,
+          major: major
         },
-        isValid: (startYear && endYear && description ? true : false)
+        isValid: (startYear && endYear && company && position && major ? true : false)
       }
   }
 

@@ -57,19 +57,42 @@ export default class Award extends Component {
       }
     }
 
+    const that = this;
+
+    const props = {
+      level: {
+        menuItems: data.levels,
+        label: 'Cấp độ',
+        onChange: this.levelOnChange.bind(that, data)
+      },
+      year: {
+        menuItems: data.years,
+        label: 'Năm'
+      },
+      subject: {
+        menuItems: that.state.subjects,
+        label: 'Môn thi'
+      },
+      award: {
+        menuItems: that.state.awards,
+        label: 'Giải thuởng'
+      }
+
+    }
+
     return (
       <ul style={style.ul}>
         <li style={{...style.li, width: '15%'}}>
-          <SelectField ref="Level" menuItems={data.levels} label="Cấp độ" onChange={this.levelOnChange.bind(this, data)}/>
+          <SelectField ref="Level" {...props.level}/>
         </li>
         <li style={{...style.li, width: '15%'}}>
-          <SelectField ref="Year" menuItems={data.years} label="Năm"/>
+          <SelectField ref="Year" {...props.year}/>
         </li>
         <li style={{...style.li, width: '25%'}}>
-          <SelectField ref="Subject" menuItems={this.state.subjects} label="Môn thi"/>
+          <SelectField ref="Subject" {...props.subject}/>
         </li>
         <li style={{...style.li, width: '25%'}}>
-          <SelectField ref="Award" menuItems={this.state.awards} label="Giải thuởng"/>
+          <SelectField ref="Award" {...props.award}/>
         </li>
         <li style={{...style.li, width: '10%'}}>
           <button onClick={this.props.onDelete}> Delete </button>

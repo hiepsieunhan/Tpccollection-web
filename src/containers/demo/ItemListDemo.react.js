@@ -18,10 +18,13 @@ export default class Demo extends Component {
       <div style={{width: '60%'}}>
         <CardContainer title="Thanh tich va qua trinh hoc tap, lam viec" style={style.cardContainer}>
           <SecondaryCardContainer title="Hoat dong ngoai khoa" style={style.secondaryCardContainer}>
-            <ItemList ref="ItemList" type="HighSchoolCA" />
+            <ItemList ref="HighSchoolCAList" type="HighSchoolCA" />
           </SecondaryCardContainer>
           <SecondaryCardContainer title="Thanh tich hoc tap va thi cu" style={style.secondaryCardContainer}>
-            <ItemList ref="ItemList" type="Award" />
+            <ItemList ref="AwardList" type="Award" />
+          </SecondaryCardContainer>
+          <SecondaryCardContainer title="Qua trinh lam viec" style={style.secondaryCardContainer}>
+            <ItemList ref="Work" type="Work" />
           </SecondaryCardContainer>
         </CardContainer>
 
@@ -31,7 +34,17 @@ export default class Demo extends Component {
   }
 
   getData = () => {
-    const data = this.refs.ItemList.getData();
+    const highSchoolAchievement = this.refs.AwardList.getData(),
+      highSchoolCurricularActivity = this.refs.HighSchoolCAList.getData(),
+      work = this.refs.Work.getData();
+    const data = {
+      data: {
+        highSchoolAchievement: highSchoolAchievement.data,
+        highSchoolCurricularActivity: highSchoolCurricularActivity.data,
+        work: work.data
+      },
+      isValid: (highSchoolAchievement.isValid && highSchoolCurricularActivity.isValid && work.isValid)
+    }
     console.log(data);
     return data;
   }
