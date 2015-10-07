@@ -6,7 +6,7 @@ export default class BasicInfoDemo extends Component {
 
   render() {
     return (
-      <div style={{width: '60%'}}>
+      <div style={{width: '80%'}}>
         <CardContainer title="Thông tin cá nhân">
           <BasicInfo ref="BasicInfo"/>
         </CardContainer>

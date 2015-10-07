@@ -9,23 +9,15 @@ export default class Demo extends Component {
     const style={
       cardContainer: {
         padding: '20px'
-      },
-      secondaryCardContainer: {
-        padding: '20px'
       }
     }
     return (
-      <div style={{width: '60%'}}>
+      <div style={{width: '80%'}}>
         <CardContainer title="Thanh tich va qua trinh hoc tap, lam viec" style={style.cardContainer}>
-          <SecondaryCardContainer title="Hoat dong ngoai khoa" style={style.secondaryCardContainer}>
             <ItemList ref="HighSchoolCAList" type="HighSchoolCA" />
-          </SecondaryCardContainer>
-          <SecondaryCardContainer title="Thanh tich hoc tap va thi cu" style={style.secondaryCardContainer}>
             <ItemList ref="AwardList" type="Award" />
-          </SecondaryCardContainer>
-          <SecondaryCardContainer title="Qua trinh lam viec" style={style.secondaryCardContainer}>
-            <ItemList ref="Work" type="Work" />
-          </SecondaryCardContainer>
+            <ItemList ref="WorkList" type="Work" />
+            <ItemList ref="DegreeList" type="Degree" />
         </CardContainer>
 
         <button onClick={this.getData}> Show </button>
@@ -34,16 +26,18 @@ export default class Demo extends Component {
   }
 
   getData = () => {
-    const highSchoolAchievement = this.refs.AwardList.getData(),
-      highSchoolCurricularActivity = this.refs.HighSchoolCAList.getData(),
-      work = this.refs.Work.getData();
+    const awardList = this.refs.AwardList.getData(),
+      highSchoolCAList = this.refs.HighSchoolCAList.getData(),
+      workList = this.refs.WorkList.getData(),
+      degreeList = this.refs.DegreeList.getData();
     const data = {
       data: {
-        highSchoolAchievement: highSchoolAchievement.data,
-        highSchoolCurricularActivity: highSchoolCurricularActivity.data,
-        work: work.data
+        highSchoolAchievement: awardList.data,
+        highSchoolCurricularActivity: highSchoolCAList.data,
+        work: workList.data,
+        degree: degreeList.data
       },
-      isValid: (highSchoolAchievement.isValid && highSchoolCurricularActivity.isValid && work.isValid)
+      isValid: (awardList.isValid && highSchoolCAList.isValid && workList.isValid && degreeList.isValid)
     }
     console.log(data);
     return data;

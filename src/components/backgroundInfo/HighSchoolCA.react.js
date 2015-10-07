@@ -36,7 +36,6 @@ export default class HighSchoolCA extends Component {
         label: 'Tới năm'
       },
       description: {
-        required: true,
         multiLine: true,
         label: 'Hoạt động tham gia'
       }
@@ -45,6 +44,9 @@ export default class HighSchoolCA extends Component {
 
     return (
       <ul style={style.ul}>
+        <li style={{...style.li, width: '10%'}}>
+          <button onClick={this.props.onDelete}> Delete </button>
+        </li>
         <li style={{...style.li, width: '15%'}}>
           <SelectField ref="StartYear" {...props.startYear} />
         </li>
@@ -53,9 +55,6 @@ export default class HighSchoolCA extends Component {
         </li>
         <li style={{...style.li, width: '50%'}}>
           <TextField ref="Description" {...props.description}/>
-        </li>
-        <li style={{...style.li, width: '10%'}}>
-          <button onClick={this.props.onDelete}> Delete </button>
         </li>
       </ul>
     );

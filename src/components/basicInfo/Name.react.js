@@ -24,7 +24,8 @@ export default class Name extends Component {
     const style = {
       ul: {
         'listStyleType': 'none',
-        'padding': 0
+        'padding': 0,
+         maxWidth: '800px'
       },
       li: {
         'display': 'inline-block',

@@ -7,7 +7,7 @@ export default class ContactInfoDemo extends Component {
 
   render() {
     return (
-      <div style={{width: '60%'}}>
+      <div style={{width: '70%'}}>
         <CardContainer title="Thông tin lien lac">
           <ContactInfo ref="ContactInfo"/>
         </CardContainer>

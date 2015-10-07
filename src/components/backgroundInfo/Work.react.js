@@ -36,7 +36,6 @@ export default class Work extends Component {
         label: 'Tới năm'
       },
       company: {
-        required: true,
         multiLine: true,
         hint: 'Ngân hàng ABC',
         label: 'Nơi làm việc'
@@ -55,6 +54,9 @@ export default class Work extends Component {
 
     return (
       <ul style={style.ul}>
+        <li style={{...style.li, width: '10%'}}>
+          <button onClick={this.props.onDelete}> Delete </button>
+        </li>
         <li style={{...style.li, width: '13%'}}>
           <SelectField ref="StartYear" {...props.startYear}/>
         </li>
@@ -69,9 +71,6 @@ export default class Work extends Component {
         </li>
         <li style={{...style.li, width: '15%'}}>
           <TextField ref="Position" {...props.position}/>
-        </li>
-        <li style={{...style.li, width: '10%'}}>
-          <button onClick={this.props.onDelete}> Delete </button>
         </li>
       </ul>
     );

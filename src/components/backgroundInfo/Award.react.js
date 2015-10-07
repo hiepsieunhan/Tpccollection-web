@@ -82,6 +82,9 @@ export default class Award extends Component {
 
     return (
       <ul style={style.ul}>
+        <li style={{...style.li, width: '10%'}}>
+          <button onClick={this.props.onDelete}> Delete </button>
+        </li>
         <li style={{...style.li, width: '15%'}}>
           <SelectField ref="Level" {...props.level}/>
         </li>
@@ -93,9 +96,6 @@ export default class Award extends Component {
         </li>
         <li style={{...style.li, width: '25%'}}>
           <SelectField ref="Award" {...props.award}/>
-        </li>
-        <li style={{...style.li, width: '10%'}}>
-          <button onClick={this.props.onDelete}> Delete </button>
         </li>
       </ul>
     );
