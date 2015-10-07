@@ -1,17 +1,6 @@
 import React, {PropTypes, Component} from 'react';
 import SelectField from '../SelectField.react';
-
-var getListYear = () => {
-  let startYear = 1970, endYear = (new Date()).getFullYear();
-  let result = [];
-  for (var i = startYear; i <= endYear; i++) {
-    result.push({
-      payload: i,
-      text: i
-    });
-  }
-  return result;
-}
+import Utils from '../../utils/supportedFuncs';
 
 export default class Award extends Component {
 
@@ -25,17 +14,14 @@ export default class Award extends Component {
   }
 
   render() {
-
-    const True = true;
-
     const style = {
       ul: {
-        'listStyleType': 'none',
-        'padding': 0
+        listStyleType: 'none',
+        padding: 0
       },
       li: {
-        'display': 'inline-block',
-        'verticalAlign': 'middle',
+        display: 'inline-block',
+        verticalAlign: 'middle',
         marginRight: '2%'
       }
     }
@@ -45,7 +31,7 @@ export default class Award extends Component {
         {payload: 'quocGia', text: 'Quốc gia'},
         {payload: 'quocTe', text: 'Quốc tế'}
       ],
-      years: getListYear(),
+      years: Utils.getListYear(),
       list: {
         'quocTe': {
           'subjects': [
@@ -100,7 +86,7 @@ export default class Award extends Component {
   }
 
   getData = () => {
-      let level = this.refs.Level.getValue(),
+      const level = this.refs.Level.getValue(),
         year = this.refs.Year.getValue(),
         subject = this.refs.Subject.getValue(),
         award = this.refs.Award.getValue();

@@ -1,35 +1,48 @@
-import React, {Component} from 'react';
-import Award from './award/Award.react';
-import Utils from '../utils/supportedFuncs';
+import React, {PropTypes, Component} from 'react';
+import Award from './Award.react';
+import HighSchoolCA from './HighSchoolCA.react';
+import Utils from '../../utils/supportedFuncs';
 
-console.log(Utils);
+export default class ItemList extends Component {
 
-export default class AwardList extends Component {
+  static propTypes = {
+    type: PropTypes.oneOf([
+      'Award',
+      'HighSchoolCA'
+    ]).isRequired
+  }
 
   state = {
-    awardRefs: []
+    itemRefs: []
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.addAward}> Add </button>
-        {this.state.awardRefs.map(ref => {
-          return <Award ref={ref} key={ref} onDelete={this.deleteAward.bind(this, ref)}/>
+        <button onClick={this.addItem}> Add </button>
+        {this.state.itemRefs.map(ref => {
+          switch (this.props.type) {
+            case ('Award'): return <Award ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
+            case ('HighSchoolCA'): return <HighSchoolCA ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
+          }
         })}
       </div>
     );
   }
 
-  addAward = () => {
+  componentWillMount = () => {
+    this.addItem();
+  }
+
+  addItem = () => {
     this.setState({
-      awardRefs: [...this.state.awardRefs, Utils.generateId()]
+      itemRefs: [...this.state.itemRefs, Utils.generateId()]
     });
   }
 
-  deleteAward = (id) => {
+  deleteItem = (id) => {
     this.setState({
-      awardRefs: this.state.awardRefs.filter(curId => {
+      itemRefs: this.state.itemRefs.filter(curId => {
         return (!(curId === id));
       })
     });
@@ -37,7 +50,7 @@ export default class AwardList extends Component {
 
   getData = () => {
     let isValid = true;
-    let data = this.state.awardRefs.map(ref => {
+    let data = this.state.itemRefs.map(ref => {
       let item = this.refs[ref].getData();
       if (!item.isValid) isValid = false;
       return item.data;

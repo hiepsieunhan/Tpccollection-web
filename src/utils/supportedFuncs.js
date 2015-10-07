@@ -24,5 +24,18 @@ export default {
   validatePhone: (phoneNumber) => {
     var stripped = phoneNumber.replace(/[\(\)\.\-\ ]/g, '');
     return !isNaN(stripped) || !phoneNumber;
+  },
+
+  getListYear: () => {
+    const startYear = 1970,
+      endYear = (new Date()).getFullYear();
+    let result = [];
+    for (var i = startYear; i <= endYear; i++) {
+      result.push({
+        payload: i,
+        text: i
+      });
+    }
+    return result;
   }
 }

@@ -8,8 +8,8 @@ export default class Demo extends Component {
     console.log(ItemList);
     return (
       <div style={{width: '60%'}}>
-        <CardContainer>
-          <ItemList ref="ItemList" />
+        <CardContainer title="Thanh tich va qua trinh hoc tap, lam viec">
+          <ItemList ref="ItemList" type="HighSchoolCA" />
           <button onClick={this.getData}> Show </button>
         </CardContainer>
       </div>
