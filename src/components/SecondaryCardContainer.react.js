@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import {AppBar} from 'material-ui';
 
 export default class CardContainer extends Component {
 
@@ -12,12 +11,24 @@ export default class CardContainer extends Component {
     const children = this.props.children;
     const style = {
       root: {
-        boxShadow: '2px 2px 2px 2px #BBBBBB'
+        boxShadow: '1px 1px 1px 1px #BBBBBB',
+        marginBottom: '20px'
+      },
+      header: {
+        background: '#00bcd4',
+        fontFamily: 'Roboto, sans-serif',
+        fontSize: '20px',
+        fontWeight: 400,
+        color: '#FFFFFF',
+        padding: '10px',
+        paddingLeft: '20px'
       }
     }
     return (
       <div style={style.root}>
-        <AppBar title={this.props.title}/>
+        <div style={style.header}>
+          {this.props.title}
+        </div>
         <div style={this.props.style}>
           {children}
         </div>
