@@ -5,6 +5,8 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import Router from './router';
 import createStore from './utils/createStore';
 
+require('./style/style.css');
+
 const store = createStore();
 const history = createBrowserHistory();
 

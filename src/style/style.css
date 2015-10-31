@@ -7,3 +7,7 @@ li: {
   display: inline-block;
   vertical-align: middle;
 }
+
+div: {
+  width: 50%;
+}

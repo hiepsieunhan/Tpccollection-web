@@ -19,7 +19,7 @@ export default class CardContainer extends Component {
         marginBottom: '20px'
       },
       header: {
-        background: '#9E9E9E',
+        background: '#00bcd4',
         fontFamily: 'Roboto, sans-serif',
         fontSize: '20px',
         fontWeight: 400,
