@@ -27,13 +27,27 @@ export default {
   },
 
   getListYear: () => {
-    const startYear = 1970,
+    const startYear = 1986,
       endYear = (new Date()).getFullYear();
     let result = [];
     for (var i = startYear; i <= endYear; i++) {
       result.push({
         payload: i,
         text: i
+      });
+    }
+    return result;
+  },
+
+  getListClassYear: () => {
+    const startYear = 1986,
+      endYear = (new Date()).getFullYear();
+    let result = [];
+    for (var i = startYear; i <= endYear; i++) {
+      let text = i + '-' + (i + 3);
+      result.push({
+        payload: text,
+        text: text
       });
     }
     return result;

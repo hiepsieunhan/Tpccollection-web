@@ -1,6 +1,8 @@
 import React, {PropTypes, Component} from 'react';
 import SelectField from '../SelectField.react';
 import Utils from '../../utils/supportedFuncs';
+import { IconButton } from 'material-ui';
+
 
 export default class Award extends Component {
 
@@ -14,17 +16,6 @@ export default class Award extends Component {
   }
 
   render() {
-    const style = {
-      ul: {
-        listStyleType: 'none',
-        padding: 0
-      },
-      li: {
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        marginRight: '2%'
-      }
-    }
 
     const data = {
       levels: [
@@ -81,20 +72,20 @@ export default class Award extends Component {
     }
 
     return (
-      <ul style={style.ul}>
-        <li style={{...style.li, width: '10%'}}>
-          <button onClick={this.props.onDelete}> Delete </button>
+      <ul>
+        <li className="icon-delete-container">
+          <IconButton iconClassName="material-icons" tooltip="Xóa" onClick={this.props.onDelete}>delete</IconButton>
         </li>
-        <li style={{...style.li, width: '15%'}}>
+        <li style={{width: '15%'}}>
           <SelectField ref="Level" {...props.level}/>
         </li>
-        <li style={{...style.li, width: '15%'}}>
+        <li style={{width: '15%'}}>
           <SelectField ref="Year" {...props.year}/>
         </li>
-        <li style={{...style.li, width: '25%'}}>
+        <li style={{width: '25%'}}>
           <SelectField ref="Subject" {...props.subject}/>
         </li>
-        <li style={{...style.li, width: '25%'}}>
+        <li style={{width: '25%'}}>
           <SelectField ref="Award" {...props.award}/>
         </li>
       </ul>

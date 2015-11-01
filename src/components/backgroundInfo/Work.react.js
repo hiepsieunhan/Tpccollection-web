@@ -2,6 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import SelectField from '../SelectField.react';
 import TextField from '../TextField.react';
 import Utils from '../../utils/supportedFuncs';
+import { IconButton } from 'material-ui';
 
 export default class Work extends Component {
 
@@ -10,17 +11,6 @@ export default class Work extends Component {
   }
 
   render() {
-    const style = {
-      ul: {
-        listStyleType: 'none',
-        padding: 0
-      },
-      li: {
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        marginRight: '2%'
-      }
-    }
 
     const data = {
       years: Utils.getListYear()
@@ -53,23 +43,23 @@ export default class Work extends Component {
     }
 
     return (
-      <ul style={style.ul}>
-        <li style={{...style.li, width: '10%'}}>
-          <button onClick={this.props.onDelete}> Delete </button>
+      <ul>
+        <li className="icon-delete-container">
+          <IconButton iconClassName="material-icons" tooltip="Xóa" onClick={this.props.onDelete}>delete</IconButton>
         </li>
-        <li style={{...style.li, width: '13%'}}>
+        <li style={{width: '13%'}}>
           <SelectField ref="StartYear" {...props.startYear}/>
         </li>
-        <li style={{...style.li, width: '13%'}}>
+        <li style={{width: '13%'}}>
           <SelectField ref="EndYear" {...props.endYear}/>
         </li>
-        <li style={{...style.li, width: '20%'}}>
+        <li style={{width: '20%'}}>
           <TextField ref="Company" {...props.company}/>
         </li>
-        <li style={{...style.li, width: '15%'}}>
+        <li style={{width: '18%'}}>
           <TextField ref="Major" {...props.major}/>
         </li>
-        <li style={{...style.li, width: '15%'}}>
+        <li style={{width: '18%'}}>
           <TextField ref="Position" {...props.position}/>
         </li>
       </ul>

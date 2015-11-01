@@ -6,18 +6,13 @@ import SecondaryCardContainer from '../SecondaryCardContainer.react';
 export default class BackgroundInfo extends Component {
 
   render() {
-    const style={
-      cardContainer: {
-        padding: '20px'
-      }
-    }
     return (
       <div>
-        <CardContainer title="Thanh tich va qua trinh hoc tap, lam viec" style={style.cardContainer}>
+        <CardContainer title="Thành tích và quá trình học tập, làm việc">
             <ItemList ref="HighSchoolCAList" type="HighSchoolCA" />
             <ItemList ref="AwardList" type="Award" />
-            <ItemList ref="WorkList" type="Work" />
             <ItemList ref="DegreeList" type="Degree" />
+            <ItemList ref="WorkList" type="Work" />
         </CardContainer>
       </div>
     );

@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import TextField from '../TextField.react';
 import Utils from '../../utils/supportedFuncs';
 
-export default class BasicInfo extends Component {
+export default class ContactInfo extends Component {
 
   render() {
-    const data = {
+    const props = {
       email: {
         required: true,
         label: 'Địa chỉ email',
@@ -30,17 +30,6 @@ export default class BasicInfo extends Component {
     };
 
     const style = {
-      root: {
-        padding: '20px'
-      },
-      ul: {
-        'listStyleType': 'none',
-        'padding': 0
-      },
-      li: {
-        'display': 'inline-block',
-        'verticalAlign': 'middle'
-      },
       address: {
         width: '80%'
       },
@@ -50,20 +39,20 @@ export default class BasicInfo extends Component {
     }
 
     return (
-      <div style={style.root}>
-        <ul style={style.ul}>
-          <li style={{...style.li, width: '30%', marginRight: '20%'}}>
-            <TextField {...data.email} ref="Email"/>
+      <div>
+        <ul>
+          <li style={{width: '30%', marginRight: '20%'}}>
+            <TextField {...props.email} ref="Email"/>
           </li>
           <li style={{...style.li, width: '30%'}}>
-            <TextField {...data.phone} ref="Phone"/>
+            <TextField {...props.phone} ref="Phone"/>
           </li>
         </ul>
         <div style={style.address}>
-          <TextField {...data.address} ref="Address"/>
+          <TextField {...props.address} ref="Address"/>
         </div>
         <div style={style.socialUrl}>
-          <TextField {...data.socialUrl} ref="SocialUrl"/>
+          <TextField {...props.socialUrl} ref="SocialUrl"/>
         </div>
       </div>
     );

@@ -29,7 +29,7 @@ export default class ItemList extends Component {
       'Degree': 'Quá trình học tập sau cấp 3'
     }
     return (
-      <SecondaryCard title={titles[this.props.type]} style={{padding: '10px'}} leftButton={{onClick: this.addItem, title: 'Add'}}>
+      <SecondaryCard title={titles[this.props.type]} style={{padding: '5px'}} leftButton={{onClick: this.addItem, title: 'Add'}}>
         {this.state.itemRefs.map(ref => {
           switch (this.props.type) {
             case ('Award'): return <Award ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;

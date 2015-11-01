@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import mui, {List, Checkbox, ListItem} from 'material-ui';
 
-export default class TextField extends Component {
+export default class SchoolRole extends Component {
 
   static propTypes = {
   };

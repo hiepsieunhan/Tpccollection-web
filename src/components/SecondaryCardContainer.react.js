@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { IconButton } from 'material-ui';
 
-export default class CardContainer extends Component {
+export default class SecondaryCardContainer extends Component {
 
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -19,13 +20,12 @@ export default class CardContainer extends Component {
         marginBottom: '20px'
       },
       header: {
-        background: '#00bcd4',
+        /*background: '#00bcd4',*/
         fontFamily: 'Roboto, sans-serif',
         fontSize: '20px',
         fontWeight: 400,
-        color: '#FFFFFF',
-        padding: '10px',
-        paddingLeft: '20px'
+        color: '#424242',
+        verticalAlign: 'middle'
       },
       leftButton: {
         marginRight: '20px'
@@ -34,8 +34,9 @@ export default class CardContainer extends Component {
 
     let leftButton = undefined;
       if (this.props.leftButton) {
-        leftButton = <button style={style.leftButton} onClick={this.props.leftButton.onClick}> {this.props.leftButton.title} </button>
+        leftButton = <IconButton iconClassName="material-icons" tooltip="Thêm mới"  tooltipPosition = "bottom" onClick={this.props.leftButton.onClick}>add_circle</IconButton>
     }
+
     return (
       <div style={style.root}>
         <div style={style.header}>

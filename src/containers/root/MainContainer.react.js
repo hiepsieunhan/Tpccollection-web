@@ -3,6 +3,7 @@ import BasicInfo from '../../components/basicInfo/BasicInfo.react';
 import BackgroundInfo from '../../components/backgroundInfo/BackgroundInfo.react';
 import ContactInfo from '../../components/contactInfo/ContactInfo.react';
 import CardContainer from '../../components/CardContainer.react';
+import { RaisedButton } from 'material-ui';
 
 
 export default class MainContainer extends Component {
@@ -11,7 +12,9 @@ export default class MainContainer extends Component {
     const style={
       root:{
         width: '70%',
+        paddingBottom: '100px',
         margin: 'auto'
+
       },
       breakElement: {
         height: '50px'
@@ -30,12 +33,12 @@ export default class MainContainer extends Component {
         <BackgroundInfo ref="BackgroundInfo"/>
         {breakElement}
 
-        <CardContainer title="Thông tin lien lac">
+        <CardContainer title="Thông tin liên lạc">
           <ContactInfo ref="ContactInfo"/>
         </CardContainer>
         {breakElement}
 
-        <button onClick={this.submit}> Submit </button>
+        <RaisedButton label="Gửi lên" onClick={this.submit} backgroundColor="#43A047" labelColor="#FFF"/>
       </div>
     );
   }

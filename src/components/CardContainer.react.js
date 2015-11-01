@@ -12,13 +12,14 @@ export default class CardContainer extends Component {
     const children = this.props.children;
     const style = {
       root: {
-        boxShadow: '2px 2px 2px 2px #BBBBBB'
+        boxShadow: '2px 2px 2px 2px #BBBBBB',
+        background: '#FFF'
       }
     }
     return (
       <div style={style.root}>
         <AppBar title={this.props.title}/>
-        <div style={this.props.style}>
+        <div style={{...this.props.style, padding: '20px'}}>
           {children}
         </div>
       </div>

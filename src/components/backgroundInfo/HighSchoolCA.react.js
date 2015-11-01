@@ -2,6 +2,8 @@ import React, {PropTypes, Component} from 'react';
 import SelectField from '../SelectField.react';
 import TextField from '../TextField.react';
 import Utils from '../../utils/supportedFuncs';
+import { IconButton } from 'material-ui';
+
 
 export default class HighSchoolCA extends Component {
 
@@ -10,17 +12,6 @@ export default class HighSchoolCA extends Component {
   }
 
   render() {
-    const style = {
-      ul: {
-        listStyleType: 'none',
-        padding: 0
-      },
-      li: {
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        marginRight: '2%'
-      }
-    }
 
     const data = {
       years: Utils.getListYear()
@@ -43,17 +34,17 @@ export default class HighSchoolCA extends Component {
     }
 
     return (
-      <ul style={style.ul}>
-        <li style={{...style.li, width: '10%'}}>
-          <button onClick={this.props.onDelete}> Delete </button>
+      <ul>
+        <li className="icon-delete-container">
+          <IconButton iconClassName="material-icons" tooltip="Xóa" onClick={this.props.onDelete}>delete</IconButton>
         </li>
-        <li style={{...style.li, width: '15%'}}>
+        <li style={{width: '15%'}}>
           <SelectField ref="StartYear" {...props.startYear} />
         </li>
-        <li style={{...style.li, width: '15%'}}>
+        <li style={{width: '15%'}}>
           <SelectField ref="EndYear" {...props.endYear} />
         </li>
-        <li style={{...style.li, width: '50%'}}>
+        <li style={{width: '50%'}}>
           <TextField ref="Description" {...props.description}/>
         </li>
       </ul>

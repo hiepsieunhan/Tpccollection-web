@@ -27,7 +27,7 @@ export default class TextField extends Component {
       <MuiTextField
         ref="TextField"
         hintText={this.props.hint || ''}
-        errorText={(this.state.isRequired ? this.state.requireMessage : '') || this.state.formatErrMessage}
+        errorText={(this.state.isRequired ? this.state.requireMessage : null) || this.state.formatErrMessage}
         floatingLabelText={this.props.label || ''}
         onChange={this.handleIput}
         onFocus={this.onFocus}

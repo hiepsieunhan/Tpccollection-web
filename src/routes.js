@@ -1,4 +1,4 @@
-import React from 'react';
+                                                                                  import React from 'react';
 import { Route } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -18,3 +18,4 @@ export default (
     <Route path="contact-info" components={ContactInfo}/>
   </Route>
 );
+

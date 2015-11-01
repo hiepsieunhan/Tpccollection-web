@@ -3,16 +3,12 @@ import Name from './Name.react';
 import SelectField from '../SelectField.react';
 import SchoolRole from './SchoolRole.react';
 import {DatePicker} from 'material-ui';
+import Utils from '../../utils/supportedFuncs';
 
 const initData = () => {
   let data = {};
-  let currentYear = (new Date()).getFullYear();
-  let firstYear = 1970;
-  data.years = [];
-  for (var i = firstYear; i <= currentYear; i++) {
-    let year = i + '-' + (i + 3);
-    data.years.push({payload: year, text: year});
-  }
+
+  data.years = Utils.getListClassYear();
 
   data.classes = [
     {payload: 'Toan', text: 'Toan'},
@@ -29,31 +25,17 @@ export default class BasicInfo extends Component {
   render() {
     const True = true;
     const data = initData();
-    const style = {
-      root: {
-        padding: '20px'
-      },
-      ul: {
-        'listStyleType': 'none',
-        'padding': 0
-      },
-      li: {
-        'display': 'inline-block',
-        'width': '50%',
-        'verticalAlign': 'middle'
-      }
-    }
 
     return (
-      <div style={style.root}>
+      <div>
         <Name ref="Name"/>
-        <ul style={style.ul}>
-          <li style={{...style.li, width: '30%', marginRight: '20%'}}>
+        <ul>
+          <li style={{width: '30%', marginRight: '20%', paddingRight: '0%'}}>
             <SelectField ref="Year" menuItems={data.years} label="Niên Khóa" />
             <DatePicker fullWidth={True} ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
             <SelectField ref="Class" menuItems={data.classes} label="Lớp"/>
           </li>
-          <li style={style.li}>
+          <li>
             <SchoolRole ref="SchoolRole"/>
           </li>
 
