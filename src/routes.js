@@ -6,7 +6,7 @@ import Root from './containers/root/Root.react';
 import MainContainer from './containers/root/MainContainer.react';
 import ItemList from './containers/demo/ItemListDemo.react';
 import BasicInfo from './containers/demo/BasicInfoDemo.react';
-import ContactInfo from './containers/demo/ContactInfoDemo.react'
+import ContactInfo from './containers/demo/ContactInfoDemo.react';
 
 injectTapEventPlugin();
 

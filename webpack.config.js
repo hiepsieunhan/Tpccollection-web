@@ -39,6 +39,11 @@ module.exports = {
       loaders: [
         'url'
       ]
+    }, {
+      test: /\.jpg$/,
+      loaders: [
+        'url'
+      ]
     }, function () {
       var module = {
         test: /\.css$/
