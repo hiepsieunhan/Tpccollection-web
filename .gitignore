@@ -4,7 +4,7 @@ node_modules/
 npm-debug.log
 
 /config/config.js
-/build/
-!/build/images
+/build/*
+!/build/images/
 
 !.keep
