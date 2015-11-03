@@ -10,9 +10,9 @@ export default class TextArea extends Component {
     return (
       <div className="menu">
         <ul className="menu-ul">
-          <li> <a href=""> SỬA THÔNG TIN </a> </li>
-          <li> <a href=""> ĐIỀN THÔNG TIN </a> </li>
-          <li> <a href=""> TRANG CHỦ </a> </li>
+          <li> <a href="#"> SỬA THÔNG TIN </a> </li>
+          <li> <a href="#"> ĐIỀN THÔNG TIN </a> </li>
+          <li> <a href="#"> TRANG CHỦ </a> </li>
         </ul>
       </div>
     );

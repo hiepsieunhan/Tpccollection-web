@@ -22,13 +22,13 @@ export default class TextArea extends Component {
     return (
       <div style={{paddingRight: '10%'}}>
         <span style={style}> {label} </span>
-        <textarea row="100" ref="TextArea" className="text-area">
+        <textarea ref="TextArea" className="text-area">
         </textarea>
       </div>
     );
   }
 
   getValue = () => {
-    return this.refs.TextArea.value;
+    return this.refs.TextArea.getDOMNode().value;
   }
 }

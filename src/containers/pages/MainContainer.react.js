@@ -47,7 +47,7 @@ export default class MainContainer extends Component {
   submit = () => {
     const basicInfo = this.refs.BasicInfo.getData(),
       backgroundInfo = this.refs.BackgroundInfo.getData(),
-      contactInfo = this.refs.ContactInfo.getData();
+      contactInfo = this.refs.ContactInfo.getData(),
       proposal = this.refs.Proposal.getValue();
 
     const data = {
