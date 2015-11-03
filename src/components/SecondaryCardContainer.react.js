@@ -34,7 +34,7 @@ export default class SecondaryCardContainer extends Component {
 
     let leftButton = undefined;
       if (this.props.leftButton) {
-        leftButton = <IconButton iconClassName="material-icons" tooltip="Thêm mới"  tooltipPosition = "bottom" onClick={this.props.leftButton.onClick}>add_circle</IconButton>
+        leftButton = <IconButton iconClassName="material-icons" tooltip="Thêm mới"  tooltipPosition = "bottom-right" onClick={this.props.leftButton.onClick}>add_circle</IconButton>
     }
 
     return (

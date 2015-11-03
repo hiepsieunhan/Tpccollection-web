@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 export default class TextArea extends Component {
 
   static propTypes = {
-    label: PropTypes.string
+    label: PropTypes.array
   };
 
   render() {

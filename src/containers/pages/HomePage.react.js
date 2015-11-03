@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Router } from 'react-router';
+import {Link} from 'react-router';
 
 export default class HomePage extends Component {
 
@@ -20,13 +22,14 @@ export default class HomePage extends Component {
             Ngày Nhà Giáo Việt Nam 20-11 sẽ trở nên khó quên và ý nghĩa hơn bao giờ hết.
           </p>
         </div>
-        <button className="pretty-button main-submit-info-button" onClick={this.onSubmit}> Điền thông tin </button>
+        <button className="pretty-button main-submit-info-button" onClick={this.onSubmit}> ĐIỀN THÔNG TIN </button>
       </div>
     );
   }
 
   onSubmit = () => {
     console.log('CLicked');
+    document.getElementById('link-to-main-page').click();
   }
 
 }
