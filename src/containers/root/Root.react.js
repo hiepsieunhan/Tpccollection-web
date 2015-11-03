@@ -5,7 +5,8 @@ import HomePage from '../pages/HomePage.react';
 export default class Root extends Component {
 
   state = {
-    active: 'home'
+    active: window.location.pathname.replace('/', ''),
+    hasNoticed: false
   }
 
   render() {
@@ -18,12 +19,30 @@ export default class Root extends Component {
     );
   }
 
+  componentDidMount = () => {
+    //this.noticeUser();
+  }
+
   componentDidUpdate = () => {
-    let path = window.location.pathname.replace('/', '');
+    let path = this.getCurrentPath();
     if (path !== this.state.active) {
       this.setState({
         active: path
       });
     }
+    //this.noticeUser();
+  }
+
+  noticeUser = () => {
+    let path = this.getCurrentPath();
+    if (path === 'main' && !this.state.hasNoticed) {
+      this.setState({
+        hasNoticed: true
+      });
+    }
+  }
+
+  getCurrentPath = () => {
+    return window.location.pathname.replace('/', '');
   }
 }

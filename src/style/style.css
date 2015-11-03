@@ -57,6 +57,25 @@ for menu
   color: #FFF;
 }
 
+:global(#menu-logo) {
+  content: url("../images/logo.jpg");
+  width: 60px; height: 60px;
+  border-radius: 30px;
+  position: relative;
+  left: 20px;
+  top: 3px;
+}
+
+:global(#menu-logo-title){
+  text-decoration: none;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+  position: fixed;
+  top: 25px;
+  left: 90px;
+}
+
 /**
 ============================================
 for submit form
