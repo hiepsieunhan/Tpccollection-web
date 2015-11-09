@@ -22,14 +22,21 @@ export default class HomePage extends Component {
             Ngày Nhà Giáo Việt Nam 20-11 sẽ trở nên khó quên và ý nghĩa hơn bao giờ hết.
           </p>
         </div>
-        <button className="pretty-button main-submit-info-button" onClick={this.onSubmit}> ĐIỀN THÔNG TIN </button>
+        <button className="pretty-button main-submit-info-button" onClick={this.navigateToSubmit}> ĐIỀN THÔNG TIN </button>
+        <button className="pretty-button main-edit-info-button" onClick={this.navigateToEdit}> SỬA THÔNG TIN </button>
+
       </div>
     );
   }
 
-  onSubmit = () => {
-    console.log('CLicked');
+  navigateToSubmit = () => {
+    console.log('Main CLicked');
     document.getElementById('link-to-main-page').click();
+  }
+
+  navigateToEdit = () => {
+    console.log('Edit CLicked');
+    document.getElementById('link-to-edit-info-page').click();
   }
 
 }
