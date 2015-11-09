@@ -30,7 +30,7 @@ export default {
     const startYear = 1986,
       endYear = (new Date()).getFullYear();
     let result = [];
-    for (var i = startYear; i <= endYear; i++) {
+    for (var i = endYear; i >= startYear; i--) {
       result.push({
         payload: i,
         text: i
@@ -43,7 +43,7 @@ export default {
     const startYear = 1986,
       endYear = (new Date()).getFullYear();
     let result = [];
-    for (var i = startYear; i <= endYear; i++) {
+    for (var i = endYear; i >= startYear; i--) {
       let text = i + '-' + (i + 3);
       result.push({
         payload: text,

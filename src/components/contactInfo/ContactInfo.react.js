@@ -70,7 +70,7 @@ export default class ContactInfo extends Component {
         address: address,
         socialUrl: socialUrl
       },
-      isValid: (email && address ? true : false)
+      isValid: (email && address && Utils.validateEmail(email) ? true : false)
     }
   }
 

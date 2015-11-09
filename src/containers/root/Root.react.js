@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import Menu from '../../components/menu/Menu.react';
 import HomePage from '../pages/HomePage.react';
 
+var getCurrentPath = () => {
+  console.log(window.location.pathname);
+  return window.location.pathname.replace('/', '') || 'home';
+}
+
 export default class Root extends Component {
 
   state = {
-    active: window.location.pathname.replace('/', ''),
+    active: getCurrentPath(),
     hasNoticed: false
   }
 
@@ -24,7 +29,7 @@ export default class Root extends Component {
   }
 
   componentDidUpdate = () => {
-    let path = this.getCurrentPath();
+    let path = getCurrentPath();
     if (path !== this.state.active) {
       this.setState({
         active: path
@@ -34,15 +39,11 @@ export default class Root extends Component {
   }
 
   noticeUser = () => {
-    let path = this.getCurrentPath();
+    let path = getCurrentPath();
     if (path === 'main' && !this.state.hasNoticed) {
       this.setState({
         hasNoticed: true
       });
     }
-  }
-
-  getCurrentPath = () => {
-    return window.location.pathname.replace('/', '');
   }
 }

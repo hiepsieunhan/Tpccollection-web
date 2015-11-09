@@ -149,18 +149,32 @@ for home page
 
 :global(.main-submit-info-button) {
   position: absolute;
-  top: 500px; left: 40%;
+  top: 500px; left: 30%;
+}
+
+:global(.main-edit-info-button) {
+  position: absolute;
+  top: 500px; left: 47%;
+}
+
+:global(.main-submit-info-button:hover) {
+  top: 480px;
+}
+
+:global(.main-edit-info-button:hover) {
+  top: 480px;
 }
 
 :global(.pretty-button) {
   padding: 15px 25px;
   font-family: Roboto, sans-serif;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 500;
   outline:none;
-  background: rgba(46, 200, 102, 1);
-  color: #FFF;
+  background: rgb(46, 200, 102);
+  color: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
+  transition: 0.3s;
 }
 
 :global(.pretty-button a) {
@@ -171,7 +185,8 @@ for home page
 :global(.pretty-button:hover) {
   color: #FFF;
   background: #388E3C;
-
+  font-size: 20px;
+  padding: 20px 20px;
 }
 
 :global(.pretty-button:active) {
@@ -179,3 +194,25 @@ for home page
   background: #2E7D32;
 }
 
+/**
+============================================
+for edit page
+============================================
+**/
+
+:global(.get-info-container) {
+  display: block;
+  width: 500px;
+  padding: 20px;
+  position: absolute;
+  top: 100px;
+  left: 400px;
+  box-shadow: 1px 1px 1px 1px #BBBBBB;
+}
+
+:global(.get-info-container h1) {
+  font-weight: 500;
+  font-size: 30px;
+  color: #00bcd4;
+  margin: 10px 0 20px;
+}
