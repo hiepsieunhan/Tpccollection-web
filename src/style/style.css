@@ -107,18 +107,6 @@ for submit form
   font-style: italic;
 }
 
-:global(.side-bar) {
-  position: fixed;
-  z-index: 10;
-  left: 0;
-  top: 70px;
-  bottom: 0;
-  width: 220px;
-  background: #FFF;
-  overflow:auto;
-}
-
-
 /**
 ============================================
 for home page
@@ -215,4 +203,42 @@ for edit page
   font-size: 30px;
   color: #00bcd4;
   margin: 10px 0 20px;
+}
+
+:global(.get-info-container p) {
+  text-align: justify;
+}
+
+
+/**
+============================================
+for side bar
+============================================
+**/
+:global(#side-bar) {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 70px;
+  bottom: 0;
+  width: 220px;
+  background: #FFF;
+  overflow:auto;
+}
+
+:global(#side-bar-header p) {
+  color: #00bcd4;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  margin: 30px 0 10px;
+}
+
+:global(#side-bar-header-summary) {
+  display: block;
+  margin: auto;
+  width: 120px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #43A047;
 }
