@@ -84,7 +84,7 @@ for submit form
 
 :global(.main-container) {
   position: relative;
-  left: 80px;
+  left: 90px;
   width: 70%;
   padding-bottom: 100px;
   padding-top: 100px;
@@ -221,14 +221,14 @@ for side bar
   left: 0;
   top: 70px;
   bottom: 0;
-  width: 220px;
+  width: 240px;
   background: #FFF;
   overflow:auto;
 }
 
 :global(#side-bar-header p) {
   color: #00bcd4;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   text-align: center;
   margin: 30px 0 10px;
@@ -241,4 +241,36 @@ for side bar
   font-size: 18px;
   font-weight: 600;
   color: #43A047;
+}
+
+:global(#side-bar-main-container li) {
+  cursor: pointer;
+  display: block;
+  vertical-align: middle;
+  margin-right: 0;
+}
+
+:global(#side-bar-main-container .highlight:hover) {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+:global(#side-bar-main-container .year) {
+  padding:8px 0;
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 1);
+}
+
+:global(#side-bar-main-container .class) {
+  padding:6px 0;
+  padding-left: 33px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+:global(#side-bar-main-container .student) {
+  padding:4px 10px;
+  padding-left: 45px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
 }

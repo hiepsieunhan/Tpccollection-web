@@ -11,32 +11,42 @@ export default class TextArea extends Component {
     const fakeData = {
       '2008-2009': {
         'Toan': [
-          'Nguyen Van A',
+          'Nguyen Thi Thu Thuy Huyen',
           'Nguyen Thi B'
         ],
         'Ly': [
           'Nguyen Van C',
           'Nguyen Thi D'
+        ]
+      },
+      '2013-2015': {
+        'Toan': [
+          'Nguyen Van E',
+          'Nguyen Thi F'
+        ],
+        'Ly': [
+          'Nguyen Van G',
+          'Nguyen Thi H'
         ]
       },
       '2011-2012': {
         'Toan': [
-          'Nguyen Van A',
-          'Nguyen Thi B'
+          'Nguyen Van I',
+          'Nguyen Thi J'
         ],
         'Ly': [
-          'Nguyen Van C',
-          'Nguyen Thi D'
+          'Nguyen Van K',
+          'Nguyen Thi L'
         ]
       },
       '2010-2011': {
         'Toan': [
-          'Nguyen Van A',
-          'Nguyen Thi B'
+          'Nguyen Van M',
+          'Nguyen Thi N'
         ],
         'Ly': [
-          'Nguyen Van C',
-          'Nguyen Thi D'
+          'Nguyen Van O',
+          'Nguyen Thi P'
         ]
       }
     }
@@ -61,9 +71,9 @@ export default class TextArea extends Component {
   }
 
   getListYear = (listYear) => {
-    return Object.keys(listYear).map(year => {
+    return Object.keys(listYear).sort().map(year => {
       return (<ul>
-                <li> {year} </li>
+                <li className="highlight year"> {year} </li>
                 <li>
                   {
                     this.getListClass(listYear[year])
@@ -74,9 +84,9 @@ export default class TextArea extends Component {
   }
 
   getListClass = (listClass) => {
-    return Object.keys(listClass).map(_class => {
+    return Object.keys(listClass).sort().map(_class => {
       return (<ul>
-                <li> {_class} </li>
+                <li className="highlight class"> {_class} </li>
                 <li>
                   {
                     this.getListStudent(listClass[_class])
@@ -91,7 +101,7 @@ export default class TextArea extends Component {
       <ul>
         {
           listStudent.map(name => {
-            return (<li> {name} </li>)
+            return (<li className="highlight student"> {name} </li>)
           })
         }
       </ul>
