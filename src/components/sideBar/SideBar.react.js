@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { IconButton } from 'material-ui';
+import SideBarListYear from './SideBarListYear.react';
 
 export default class TextArea extends Component {
 
@@ -7,10 +8,9 @@ export default class TextArea extends Component {
   };
 
   render() {
-
     const fakeData = {
       '2008-2009': {
-        'Toan': [
+        'Toán': [
           'Nguyen Thi Thu Thuy Huyen',
           'Nguyen Thi B'
         ],
@@ -51,7 +51,10 @@ export default class TextArea extends Component {
       }
     }
 
-    let list = this.getListYear(fakeData);
+
+    const list = Object.keys(fakeData).sort().map(year => {
+      return <SideBarListYear classList={fakeData[year]} year={year}/>
+    });
 
     return (
       <div id="side-bar">
@@ -69,50 +72,4 @@ export default class TextArea extends Component {
       </div>
     );
   }
-
-  getListYear = (listYear) => {
-    return Object.keys(listYear).sort().map(year => {
-      return (<ul>
-                <li className="highlight year"> {year} </li>
-                <li>
-                  {
-                    this.getListClass(listYear[year])
-                  }
-                </li>
-              </ul>)
-    })
-  }
-
-  getListClass = (listClass) => {
-    return Object.keys(listClass).sort().map(_class => {
-      return (<ul>
-                <li className="highlight class"> {_class} </li>
-                <li>
-                  {
-                    this.getListStudent(listClass[_class])
-                  }
-                </li>
-              </ul>)
-    })
-  }
-
-  getListStudent = (listStudent) => {
-    return (
-      <ul>
-        {
-          listStudent.map(name => {
-            return (<li className="highlight student"> {name} </li>)
-          })
-        }
-      </ul>
-    );
-  }
-
-
-
-
-  reloadData = () => {
-    console.log('reloadData');
-  }
-
 }

@@ -224,6 +224,7 @@ for side bar
   width: 240px;
   background: #FFF;
   overflow:auto;
+  border-right: 1px solid #DDD;
 }
 
 :global(#side-bar-header p) {
@@ -250,6 +251,7 @@ for side bar
   margin-right: 0;
 }
 
+
 :global(#side-bar-main-container .highlight:hover) {
   background: rgba(0, 0, 0, 0.07);
 }
@@ -273,4 +275,5 @@ for side bar
   padding-left: 45px;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
 }
