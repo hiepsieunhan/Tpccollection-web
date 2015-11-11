@@ -1,10 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import { reloadStudents } from '../../actions';
 
 export default class SideBarListClass extends Component {
 
   static propTypes = {
-    studentList: PropTypes.array.isRequired,
+    year: PropTypes.string.isRequired,
     class_: PropTypes.string.isRequired,
+    classesList: PropTypes.object.isRequired,
+    dispatch: PropTypes.func,
     shouldShow: PropTypes.bool.isRequired
   }
 
@@ -13,9 +16,9 @@ export default class SideBarListClass extends Component {
   }
 
   render() {
-    const data = this.props.studentList;
+    const currentClass = this.props.classesList[this.props.class_] || [];
 
-    const studentList = data.sort().map((student, index)=> {
+    const studentList = currentClass.sort().map((student, index)=> {
       return (
         <li key={index} className="highlight student"> {student} </li>
       );
@@ -25,11 +28,11 @@ export default class SideBarListClass extends Component {
 
     const list = (
       <ul>
-        <li className="class highlight" onClick={this.toggle}>
+        <li className="class highlight" onClick={this.handleClick}>
           {this.props.class_}
         </li>
         <li style={style}>
-          <ul>
+         <ul>
             {studentList}
           </ul>
         </li>
@@ -49,9 +52,22 @@ export default class SideBarListClass extends Component {
     }
   }
 
+  handleClick = () => {
+    console.log('Click');
+    if (!this.state.show) {
+      this.loadStudents();
+    }
+    this.toggle();
+  }
+
   toggle = () => {
     this.setState({
       show: !this.state.show
     });
+  }
+
+  loadStudents = () => {
+    const { dispatch } = this.props;
+    dispatch(reloadStudents(this.props.year, this.props.class_));
   }
 }
