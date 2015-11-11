@@ -18,9 +18,9 @@ export default class SchoolRole extends Component {
       {payload: 'biThu', text: 'Bí thư'}
     ];
 
-    const listItems = items.map(item => {
+    const listItems = items.map((item, index) => {
       return (
-        <ListItem primaryText={item.text} leftCheckbox={<Checkbox onCheck={this.checkBoxOnCheck.bind(this, item.payload)}/>} />
+        <ListItem key={index} primaryText={item.text} leftCheckbox={<Checkbox onCheck={this.checkBoxOnCheck.bind(this, item.payload)}/>} />
       );
     });
 

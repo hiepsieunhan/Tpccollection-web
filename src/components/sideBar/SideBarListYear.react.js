@@ -15,9 +15,9 @@ export default class SideBarListYear extends Component {
   render() {
     const data = this.props.classList;
 
-    const classList = Object.keys(data).map(class_ => {
+    const classList = Object.keys(data).map((class_, index) => {
       return (
-        <SideBarListClass studentList={data[class_]} class_={class_} shouldShow={this.state.show}/>
+        <SideBarListClass key={index} studentList={data[class_]} class_={class_} shouldShow={this.state.show}/>
       );
     });
 

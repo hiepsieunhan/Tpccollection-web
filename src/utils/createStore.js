@@ -1,17 +1,21 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { reduxReactRouter } from 'redux-router';
 import thunkMiddleware from 'redux-thunk';
 import loggerMiddleware from 'redux-logger';
-import promiseMiddleware from 'redux-promise-middleware';
-
+import { createHistory } from 'history';
 import rootReducer from '../reducers';
-import { Playback } from '../constants/ActionTypes';
+import { devTools, persistState } from 'redux-devtools';
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
-  promiseMiddleware,
   loggerMiddleware
-)(createStore);
+);
 
 export default (initialState) => {
-  return createStoreWithMiddleware(rootReducer, initialState);
+  return compose(
+    createStoreWithMiddleware,
+    reduxReactRouter({ createHistory }),
+    devTools(),
+    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+  )(createStore)(rootReducer);
 };

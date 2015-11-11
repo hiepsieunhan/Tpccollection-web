@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
+import { routerStateReducer } from 'redux-router';
 
-const rootReducer = combineReducers({
-
+const reducer = combineReducers({
+  router: routerStateReducer
 });
 
 
-export default rootReducer;
+export default reducer;

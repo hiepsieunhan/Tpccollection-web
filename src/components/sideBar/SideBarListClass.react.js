@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 export default class SideBarListClass extends Component {
 
   static propTypes = {
-    studentList: PropTypes.object.isRequired,
+    studentList: PropTypes.array.isRequired,
     class_: PropTypes.string.isRequired,
     shouldShow: PropTypes.bool.isRequired
   }
@@ -15,9 +15,9 @@ export default class SideBarListClass extends Component {
   render() {
     const data = this.props.studentList;
 
-    const studentList = data.sort().map(student => {
+    const studentList = data.sort().map((student, index)=> {
       return (
-        <li className="highlight student"> {student} </li>
+        <li key={index} className="highlight student"> {student} </li>
       );
     });
 

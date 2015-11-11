@@ -8,8 +8,8 @@ export default class TextArea extends Component {
 
   render() {
 
-    let label = this.props.label.map(text => {
-      return (<span> {text} <br/> </span>);
+    let label = this.props.label.map((text, index)=> {
+      return (<span key={index}> {text} <br/> </span>);
     });
 
     const style = {

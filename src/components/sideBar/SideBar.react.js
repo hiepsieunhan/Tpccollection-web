@@ -52,8 +52,8 @@ export default class TextArea extends Component {
     }
 
 
-    const list = Object.keys(fakeData).sort().map(year => {
-      return <SideBarListYear classList={fakeData[year]} year={year}/>
+    const list = Object.keys(fakeData).sort().map((year, index) => {
+      return <SideBarListYear key={index} classList={fakeData[year]} year={year}/>
     });
 
     return (
