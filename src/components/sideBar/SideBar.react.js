@@ -14,55 +14,12 @@ class SideBar extends Component {
 
   render() {
 
-    const fakeData = {
-      '2008-2009': {
-        'Toán': [
-          'Nguyen Thi Thu Thuy Huyen',
-          'Nguyen Thi B'
-        ],
-        'Ly': [
-          'Nguyen Van C',
-          'Nguyen Thi D'
-        ]
-      },
-      '2013-2015': {
-        'Toan': [
-          'Nguyen Van E',
-          'Nguyen Thi F'
-        ],
-        'Ly': [
-          'Nguyen Van G',
-          'Nguyen Thi H'
-        ]
-      },
-      '2011-2012': {
-        'Toan': [
-          'Nguyen Van I',
-          'Nguyen Thi J'
-        ],
-        'Ly': [
-          'Nguyen Van K',
-          'Nguyen Thi L'
-        ]
-      },
-      '2010-2011': {
-        'Toan': [
-          'Nguyen Van M',
-          'Nguyen Thi N'
-        ],
-        'Ly': [
-          'Nguyen Van O',
-          'Nguyen Thi P'
-        ]
-      }
-    }
-
     const { sideBar, dispatch } = this.props;
 
     console.log(sideBar.data);
 
     const list = sideBar.years.sort().map((year, index) => {
-      return <SideBarListYear key={index} year={year} listYears={sideBar.data} dispatch={dispatch}/>
+      return <SideBarListYear key={index} year={year} list={sideBar.data} dispatch={dispatch}/>
     });
 
     return (
@@ -82,7 +39,7 @@ class SideBar extends Component {
     );
   }
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     this.reloadData();
   }
 

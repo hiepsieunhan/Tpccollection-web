@@ -43,6 +43,7 @@ export const reload = () => dispatch => {
 }
 
 const finishReloadClasses = (status, classes, year) => {
+  console.log('finishReloadClasses');
   return {
     type: 'RELOAD_SIDE_BAR_CLASSES',
     finish: true,
@@ -54,7 +55,7 @@ const finishReloadClasses = (status, classes, year) => {
   }
 }
 
-export const reloadClasses = (year) => (dispatch) => {
+export const reloadClasses = (year) => (dispatch, getState) => {
   $.ajax({
     method: 'GET',
     url: 'https://api.myjson.com/bins/3v59h'
@@ -66,6 +67,7 @@ export const reloadClasses = (year) => (dispatch) => {
 }
 
 const finishReloadStudents = (status, students, year, class_) => {
+  console.log('finishReloadStudents');
   return {
     type: 'RELOAD_SIDE_BAR_STUDENTS',
     finish: true,
@@ -78,7 +80,7 @@ const finishReloadStudents = (status, students, year, class_) => {
   }
 }
 
-export const reloadStudents = (year, class_) => (dispatch) => {
+export const reloadStudents = (year, class_) => (dispatch, getState) => {
   $.ajax({
     method: 'GET',
     url: 'https://api.myjson.com/bins/3lb3h'

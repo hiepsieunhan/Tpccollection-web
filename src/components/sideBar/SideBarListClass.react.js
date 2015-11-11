@@ -6,7 +6,7 @@ export default class SideBarListClass extends Component {
   static propTypes = {
     year: PropTypes.string.isRequired,
     class_: PropTypes.string.isRequired,
-    classesList: PropTypes.object.isRequired,
+    list: PropTypes.object.isRequired,
     dispatch: PropTypes.func,
     shouldShow: PropTypes.bool.isRequired
   }
@@ -16,7 +16,8 @@ export default class SideBarListClass extends Component {
   }
 
   render() {
-    const currentClass = this.props.classesList[this.props.class_] || [];
+
+    const currentClass = this.props.list[this.getId()] || [];
 
     const studentList = currentClass.sort().map((student, index)=> {
       return (
@@ -52,9 +53,12 @@ export default class SideBarListClass extends Component {
     }
   }
 
+  getId = () => {
+    return this.props.year + '-' + this.props.class_;
+  }
+
   handleClick = () => {
-    console.log('Click');
-    if (!this.state.show) {
+    if (!this.state.show && !this.props.list[this.getId()]) {
       this.loadStudents();
     }
     this.toggle();

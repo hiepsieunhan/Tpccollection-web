@@ -7,7 +7,7 @@ export default class SideBarListYear extends Component {
 
   static propTypes = {
     year: PropTypes.string.isRequired,
-    listYears: PropTypes.object.isRequired,
+    list: PropTypes.object.isRequired,
     dispatch: PropTypes.func
   }
 
@@ -17,11 +17,11 @@ export default class SideBarListYear extends Component {
 
   render() {
 
-    let currentYear = (this.props.listYears)[this.props.year] || {classes: [], data: {}};
+    let currentYear = this.props.list[this.getId()] || [];
 
-    const classList = currentYear.classes.map((class_, index) => {
+    const classList = currentYear.map((class_, index) => {
       return (
-        <SideBarListClass key={index} year={this.props.year} class_={class_} shouldShow={this.state.show} dispatch={this.props.dispatch} classesList={currentYear.data}/>
+        <SideBarListClass key={index} year={this.props.year} class_={class_} shouldShow={this.state.show} dispatch={this.props.dispatch} list={this.props.list}/>
       );
     });
 
@@ -45,8 +45,12 @@ export default class SideBarListYear extends Component {
     );
   }
 
+  getId = () => {
+    return this.props.year;
+  }
+
   handdleClick = () => {
-    if (!this.state.show) {
+    if (!this.state.show && !this.props.list[this.getId()]) {
       this.loadCLasses();
     }
     this.toggle();

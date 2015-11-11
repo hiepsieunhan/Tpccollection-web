@@ -8,39 +8,48 @@ import {
 
 
 const sideBarReducer = (state = {count: 0, isLoading: false, years: [], data:{}}, action) => {
+
   switch (action.type) {
+
     case RELOAD_SIDE_BAR:
       if (action.start || (action.finish && !action.success)) {
-        return {...state, isLoading: true}
-      } else if (action.finish) {
-        return {...state, isLoading: false, years: action.data.years, count: action.data.count, data:{}}
+        return {
+          ...state,
+          isLoading: action.start ? true : false
+        }
       }
-      break;
-    case RELOAD_SIDE_BAR_CLASSES:
       if (action.finish && action.success) {
-        let newData = {};
-        const loadedYear = action.data;
-        newData[loadedYear.year] = {
-          classes: loadedYear.classes,
+        return {
+          count: action.data.count,
+          isLoading: false,
+          years: action.data.years,
           data: {}
         }
-        return {...state, data: {...state.data, ...newData}}
       }
       break;
+
+    case RELOAD_SIDE_BAR_CLASSES:
+      if (action.finish && action.success) {
+        const loadedYear = action.data;
+        let newData = {};
+        newData[loadedYear.year] = loadedYear.classes;
+        return {
+          ...state,
+          data: {...state.data, ...newData}
+        }
+      }
+      break;
+
     case RELOAD_SIDE_BAR_STUDENTS:
       if (action.finish && action.success) {
-        let newYear = {};
-
         const loadedClass = action.data;
-        newYear[loadedClass.class_] = loadedClass.students;
-        newYear = {classes: state.data[loadedClass.year].classes, data: {...state.data[loadedClass.year].data, ...newYear}};
-
-        let newData = {};
-        newData[loadedClass.year] = newYear;
-
-        console.log(newYear, newData);
-
-        return {...state, data: {...state.data, ...newData}}
+        const id = loadedClass.year + '-' + loadedClass.class_;
+        let newData = {}
+        newData[id] = loadedClass.students;
+        return {
+          ...state,
+          data: {...state.data, ...newData}
+        }
       }
       break;
   }
