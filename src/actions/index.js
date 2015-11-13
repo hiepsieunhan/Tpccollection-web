@@ -91,3 +91,8 @@ export const reloadStudents = (year, class_) => (dispatch, getState) => {
   });
 }
 
+export const sendUserForm = (data, isValid) => (dispatch) => {
+  console.log(data);
+  console.log(isValid);
+}
+

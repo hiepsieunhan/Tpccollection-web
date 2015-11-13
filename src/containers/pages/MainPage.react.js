@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import BasicInfo from '../../components/basicInfo/BasicInfo.react';
 import BackgroundInfo from '../../components/backgroundInfo/BackgroundInfo.react';
 import ContactInfo from '../../components/contactInfo/ContactInfo.react';
@@ -6,9 +6,15 @@ import CardContainer from '../../components/CardContainer.react';
 import TextArea from '../../components/TextArea.react';
 import SideBar from '../../components/sideBar/SideBar.react';
 import { RaisedButton } from 'material-ui';
+import { connect } from 'react-redux';
 
+import { sendUserForm } from '../../actions';
 
-export default class MainContainer extends Component {
+class MainContainer extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func
+  }
 
   render() {
 
@@ -50,6 +56,10 @@ export default class MainContainer extends Component {
   }
 
   submit = () => {
+    const {
+      dispatch
+    } = this.props;
+
     const basicInfo = this.refs.BasicInfo.getData(),
       backgroundInfo = this.refs.BackgroundInfo.getData(),
       contactInfo = this.refs.ContactInfo.getData(),
@@ -64,7 +74,15 @@ export default class MainContainer extends Component {
 
     const isValid = basicInfo.isValid && backgroundInfo.isValid && contactInfo.isValid;
 
-    console.log(data, isValid);
+    //console.log(data, isValid);
+
+    dispatch(sendUserForm(data, isValid));
   }
 
 }
+
+function select(state) {
+  return {};
+}
+
+export default connect(select)(MainContainer);
