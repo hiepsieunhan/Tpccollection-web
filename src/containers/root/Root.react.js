@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Menu from '../../components/menu/Menu.react';
 import HomePage from '../pages/HomePage.react';
+import { connect } from 'react-redux';
 
 var getCurrentPath = () => {
   console.log(window.location.pathname);
   return window.location.pathname.replace('/', '') || 'home';
 }
 
-export default class Root extends Component {
+class Root extends Component {
+
+  static propTypes = {
+    location: PropTypes.string
+  }
 
   state = {
-    active: getCurrentPath(),
-    hasNoticed: false
+    active: ''
   }
 
   render() {
@@ -25,25 +29,33 @@ export default class Root extends Component {
   }
 
   componentDidMount = () => {
-    //this.noticeUser();
+    this.setState({
+      active: this.getCurrentPage()
+    })
   }
 
   componentDidUpdate = () => {
-    let path = getCurrentPath();
+    let path = this.getCurrentPage();
     if (path !== this.state.active) {
       this.setState({
         active: path
       });
     }
-    //this.noticeUser();
   }
 
-  noticeUser = () => {
-    let path = getCurrentPath();
-    if (path === 'main' && !this.state.hasNoticed) {
-      this.setState({
-        hasNoticed: true
-      });
-    }
+  getCurrentPage = () => {
+    const location = this.props.location.trim();
+    if (location === '/') return 'home';
+    const paths = location.split('/');
+    return paths[1];
   }
 }
+
+
+const select = (state) => {
+  return {
+    location: state.router.location.pathname
+  }
+}
+
+export default connect(select)(Root);

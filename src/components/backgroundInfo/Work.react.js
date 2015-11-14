@@ -7,7 +7,8 @@ import { IconButton } from 'material-ui';
 export default class Work extends Component {
 
   static propTypes = {
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    initData: PropTypes.object
   }
 
   render() {
@@ -64,6 +65,17 @@ export default class Work extends Component {
         </li>
       </ul>
     );
+  }
+
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.StartYear.setValue(initData.startYear);
+      this.refs.EndYear.setValue(initData.endYear);
+      this.refs.Company.setValue(initData.company);
+      this.refs.Major.setValue(initData.major);
+      this.refs.Position.setValue(initData.position);
+    }
   }
 
   getData = () => {

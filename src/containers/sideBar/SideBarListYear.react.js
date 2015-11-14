@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import SideBarListClass from './SideBarListClass.react';
 import { connect } from 'react-redux';
-import { reloadClasses } from '../../actions';
+import { reloadClasses } from '../../actions/sideBar';
 
 export default class SideBarListYear extends Component {
 

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { IconButton } from 'material-ui';
 import SideBarListYear from './SideBarListYear.react';
 import { connect } from 'react-redux';
-import { reload } from '../../actions';
+import { reload } from '../../actions/sideBar';
 
 
 class SideBar extends Component {

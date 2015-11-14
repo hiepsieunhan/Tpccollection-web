@@ -16,14 +16,14 @@ export const RELOAD_SIDE_BAR_STUDENTS = 'RELOAD_SIDE_BAR_STUDENTS';
 
 const requestReload = () => {
   return {
-    type: 'RELOAD_SIDE_BAR',
+    type: RELOAD_SIDE_BAR,
     start: true
   }
 }
 
 const finishReload = (status, data) => {
   return {
-    type: 'RELOAD_SIDE_BAR',
+    type: RELOAD_SIDE_BAR,
     finish: true,
     success: status,
     data: data
@@ -45,7 +45,7 @@ export const reload = () => dispatch => {
 const finishReloadClasses = (status, classes, year) => {
   console.log('finishReloadClasses');
   return {
-    type: 'RELOAD_SIDE_BAR_CLASSES',
+    type: RELOAD_SIDE_BAR_CLASSES,
     finish: true,
     success: status,
     data: {
@@ -69,7 +69,7 @@ export const reloadClasses = (year) => (dispatch, getState) => {
 const finishReloadStudents = (status, students, year, class_) => {
   console.log('finishReloadStudents');
   return {
-    type: 'RELOAD_SIDE_BAR_STUDENTS',
+    type: RELOAD_SIDE_BAR_STUDENTS,
     finish: true,
     success: status,
     data: {

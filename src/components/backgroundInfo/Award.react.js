@@ -7,7 +7,8 @@ import { IconButton } from 'material-ui';
 export default class Award extends Component {
 
   static propTypes = {
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    initData: PropTypes.object
   }
 
   state = {
@@ -90,6 +91,16 @@ export default class Award extends Component {
         </li>
       </ul>
     );
+  }
+
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.Level.setValue(initData.level);
+      this.refs.Year.setValue(initData.years);
+      this.refs.Subject.setValue(initData.subject);
+      this.refs.Award.setValue(initData.award);
+    }
   }
 
   levelOnChange = (data, value) => {

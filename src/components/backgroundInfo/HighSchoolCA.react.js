@@ -8,7 +8,8 @@ import { IconButton } from 'material-ui';
 export default class HighSchoolCA extends Component {
 
   static propTypes = {
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    initData: PropTypes.object
   }
 
   render() {
@@ -50,6 +51,16 @@ export default class HighSchoolCA extends Component {
       </ul>
     );
   }
+
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.StartYear.setValue(initData.startYear);
+      this.refs.EndYear.setValue(initData.endYear);
+      this.refs.Description.setValue(initData.description);
+    }
+  }
+
 
   getData = () => {
     const startYear = this.refs.StartYear.getValue(),

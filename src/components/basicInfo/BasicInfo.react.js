@@ -1,11 +1,14 @@
-import React, {Component} from 'react';
+import React, {
+                Component,
+                PropTypes
+              } from 'react';
 import Name from './Name.react';
 import SelectField from '../SelectField.react';
 import SchoolRole from './SchoolRole.react';
 import {DatePicker} from 'material-ui';
 import Utils from '../../utils/supportedFuncs';
 
-const initData = () => {
+const setUpData = () => {
   let data = {};
 
   data.years = Utils.getListClassYear();
@@ -22,21 +25,32 @@ const initData = () => {
 
 export default class BasicInfo extends Component {
 
+  static propTypes = {
+    initData: PropTypes.object
+  }
+
+  state = {
+    isFirstRender: true
+  }
+
   render() {
     const True = true;
-    const data = initData();
+    const data = setUpData();
+    const initData = this.props.initData;
+    const year = 1;// (initData && initData.year && this.state.isFirstRender) ? initData.year : null;
+    const mClass = 1;//(initData && initData.class && this.state.isFirstRender) ? initData.class : null;
 
     return (
       <div>
-        <Name ref="Name"/>
+        <Name initData={initData && initData.name ? initData.name : null} ref="Name"/>
         <ul>
           <li style={{width: '30%', marginRight: '20%', paddingRight: '0%'}}>
-            <SelectField ref="Year" menuItems={data.years} label="Niên Khóa" />
+            <SelectField selectedIndex={year} ref="Year" menuItems={data.years} label="Niên Khóa" />
             <DatePicker fullWidth={True} ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
-            <SelectField ref="Class" menuItems={data.classes} label="Lớp"/>
+            <SelectField selectedIndex={mClass} ref="Class" menuItems={data.classes} label="Lớp"/>
           </li>
           <li>
-            <SchoolRole ref="SchoolRole"/>
+            <SchoolRole initData={initData && initData.roles ? initData.roles : null} ref="SchoolRole"/>
           </li>
 
         </ul>
@@ -44,13 +58,23 @@ export default class BasicInfo extends Component {
     );
   }
 
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.BirthDate.setDate(this.parseStringToDate(initData.birthDate));
+    }
+    this.setState({
+      isFirstRender: false
+    });
+  }
+
   getData = () => {
-    let name = this.refs.Name.getData();
-    let year = this.refs.Year.getValue();
-    let birthDate = this.parseDateToString(this.refs.BirthDate.getDate());
-    let mClass = this.refs.Class.getValue();
-    let roles = this.refs.SchoolRole.getData();
-    let data = {
+    const name = this.refs.Name.getData();
+    const year = this.refs.Year.getValue();
+    const birthDate = this.parseDateToString(this.refs.BirthDate.getDate());
+    const mClass = this.refs.Class.getValue();
+    const roles = this.refs.SchoolRole.getData();
+    const data = {
       data: {
         name: name.data,
         year: year,
@@ -65,11 +89,11 @@ export default class BasicInfo extends Component {
 
   parseDateToString = (date) => {
     if (!date) return '';
-    return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
   }
 
   parseStringToDate = (date) => {
-    return null;
+    return new Date(date);
   }
 
 }

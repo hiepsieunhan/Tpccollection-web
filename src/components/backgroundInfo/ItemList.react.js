@@ -6,6 +6,15 @@ import Degree from './Degree.react';
 import Work from './Work.react';
 import Utils from '../../utils/supportedFuncs';
 
+const initListRef = data => {
+  const length = data ? data.length : 0;
+  let list = [];
+  for (let i = 0; i < length; i++) {
+    list.push(Utils.generateId());
+  }
+  return list;
+}
+
 export default class ItemList extends Component {
 
   static propTypes = {
@@ -14,11 +23,14 @@ export default class ItemList extends Component {
       'HighSchoolCA',
       'Degree',
       'Work'
-    ]).isRequired
+    ]).isRequired,
+    initData: PropTypes.array
   }
 
   state = {
-    itemRefs: []
+    itemRefs: initListRef(this.props.initData),
+    isFirstRender: true,
+    initData: this.props.initData
   }
 
   render() {
@@ -28,22 +40,30 @@ export default class ItemList extends Component {
       'Work': 'Quá trình làm việc',
       'Degree': 'Quá trình học tập sau cấp 3'
     }
+
+    const initData = this.state.initData;
+    const shouldInit = (initData && this.state.isFirstRender);
+
     return (
       <SecondaryCard title={titles[this.props.type]} style={{padding: '5px'}} leftButton={{onClick: this.addItem, title: 'Add'}}>
-        {this.state.itemRefs.map(ref => {
+        {this.state.itemRefs.map((ref, index) => {
+          const curInitData = shouldInit ? initData[index] : null;
           switch (this.props.type) {
-            case ('Award'): return <Award ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
-            case ('HighSchoolCA'): return <HighSchoolCA ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
-            case ('Work'): return <Work ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
-            case ('Degree'): return <Degree ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
+            case ('Award'): return <Award initData={curInitData} ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)} />;
+            case ('HighSchoolCA'): return <HighSchoolCA initData={curInitData} ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
+            case ('Work'): return <Work initData={curInitData} ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
+            case ('Degree'): return <Degree initData={curInitData} ref={ref} key={ref} onDelete={this.deleteItem.bind(this, ref)}/>;
           }
         })}
       </SecondaryCard>
     );
   }
 
-  componentWillMount = () => {
-    //this.addItem();
+  componentDidMount = () => {
+    this.setState({
+      isFirstRender: false,
+      initData: null
+    });
   }
 
   addItem = () => {

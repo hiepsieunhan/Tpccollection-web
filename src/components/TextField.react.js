@@ -51,6 +51,10 @@ export default class TextField extends Component {
     this.setState({formatErrMessage: formatErr});
   }
 
+  setValue = (text) => {
+    this.refs.TextField.setValue(text);
+  }
+
   getValue = () => {
     return this.refs.TextField.getValue().trim();
   }
@@ -66,4 +70,5 @@ export default class TextField extends Component {
       this.props.onBlur(event);
     }
   }
+
 }

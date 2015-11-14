@@ -1,7 +1,14 @@
-import React, {Component} from 'react';
+import React, {
+                Component,
+                PropTypes
+              } from 'react';
 import TextField from '../../components/TextField.react';
 
 export default class Name extends Component {
+
+  static propTypes = {
+    initData: PropTypes.object
+  }
 
   render() {
     const props = {
@@ -56,6 +63,15 @@ export default class Name extends Component {
         </li>
       </ul>
     );
+  }
+
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.FirstName.setValue(initData.firstName);
+      this.refs.MidName.setValue(initData.midName);
+      this.refs.LastName.setValue(initData.lastName);
+    }
   }
 
   getData = () => {

@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
 export default class TextArea extends Component {
 
   static propTypes = {
-    label: PropTypes.array
+    label: PropTypes.array,
+    initData: PropTypes.string
   };
 
   render() {
@@ -28,7 +30,14 @@ export default class TextArea extends Component {
     );
   }
 
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      ReactDOM.findDOMNode(this.refs.TextArea).value = initData;
+    }
+  }
+
   getValue = () => {
-    return this.refs.TextArea.getDOMNode().value;
+    return ReactDOM.findDOMNode(this.refs.TextArea).value;
   }
 }

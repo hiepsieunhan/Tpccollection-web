@@ -4,6 +4,7 @@ import mui, {List, Checkbox, ListItem} from 'material-ui';
 export default class SchoolRole extends Component {
 
   static propTypes = {
+    initData: PropTypes.array
   };
 
   state = {
@@ -29,6 +30,15 @@ export default class SchoolRole extends Component {
           {listItems}
         </List>
     );
+  }
+
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.setState({
+        roles: initData
+      })
+    }
   }
 
   checkBoxOnCheck = (clickedItem, event, isChecked) => {

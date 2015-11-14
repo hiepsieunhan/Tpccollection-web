@@ -1,18 +1,25 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import ItemList from './ItemList.react';
 import CardContainer from '../CardContainer.react';
 import SecondaryCardContainer from '../SecondaryCardContainer.react';
 
 export default class BackgroundInfo extends Component {
 
+  static propTypes = {
+    initData: PropTypes.object
+  }
+
   render() {
+
+    const initData = this.props.initData;
+
     return (
       <div>
         <CardContainer title="Thành tích và quá trình học tập, làm việc">
-            <ItemList ref="HighSchoolCAList" type="HighSchoolCA" />
-            <ItemList ref="AwardList" type="Award" />
-            <ItemList ref="DegreeList" type="Degree" />
-            <ItemList ref="WorkList" type="Work" />
+            <ItemList initData={initData && initData.highSchoolCurricularActivity ? initData.highSchoolCurricularActivity : null} ref="HighSchoolCAList" type="HighSchoolCA" />
+            <ItemList initData={initData && initData.highSchoolAchievement ? initData.highSchoolAchievement : null} ref="AwardList" type="Award" />
+            <ItemList initData={initData && initData.degree ? initData.degree : null} ref="DegreeList" type="Degree" />
+            <ItemList initData={initData && initData.work ? initData.work : null} ref="WorkList" type="Work" />
         </CardContainer>
       </div>
     );
@@ -25,10 +32,10 @@ export default class BackgroundInfo extends Component {
       degreeList = this.refs.DegreeList.getData();
     const data = {
       data: {
-        highSchoolAchievement: awardList.data,
         highSchoolCurricularActivity: highSchoolCAList.data,
-        work: workList.data,
-        degree: degreeList.data
+        highSchoolAchievement: awardList.data,
+        degree: degreeList.data,
+        work: workList.data
       },
       isValid: (awardList.isValid && highSchoolCAList.isValid && workList.isValid && degreeList.isValid)
     }

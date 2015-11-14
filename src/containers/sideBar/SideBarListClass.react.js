@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { reloadStudents } from '../../actions';
+import { reloadStudents } from '../../actions/sideBar';
 
 export default class SideBarListClass extends Component {
 

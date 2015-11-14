@@ -1,8 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import TextField from '../TextField.react';
 import Utils from '../../utils/supportedFuncs';
 
 export default class ContactInfo extends Component {
+
+  static propTypes = {
+    initData: PropTypes.object
+  }
 
   render() {
     const props = {
@@ -58,11 +62,21 @@ export default class ContactInfo extends Component {
     );
   }
 
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.Email.setValue(initData.email);
+      this.refs.Phone.setValue(initData.phone);
+      this.refs.Address.setValue(initData.address);
+      this.refs.SocialUrl.setValue(initData.socialUrl);
+    }
+  }
+
   getData = () => {
     const email = this.refs.Email.getValue(),
-      phone = this.refs.Phone.getValue(),
-      address = this.refs.Address.getValue(),
-      socialUrl = this.refs.SocialUrl.getValue();
+          phone = this.refs.Phone.getValue(),
+          address = this.refs.Address.getValue(),
+          socialUrl = this.refs.SocialUrl.getValue();
     return {
       data: {
         email: email,

@@ -7,7 +7,8 @@ import { IconButton } from 'material-ui';
 export default class Degree extends Component {
 
   static propTypes = {
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    initData: PropTypes.object
   }
 
   render() {
@@ -64,6 +65,17 @@ export default class Degree extends Component {
         </li>
       </ul>
     );
+  }
+
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.StartYear.setValue(initData.startYear);
+      this.refs.EndYear.setValue(initData.endYear);
+      this.refs.Major.setValue(initData.major);
+      this.refs.School.setValue(initData.school);
+      this.refs.Degree.setValue(initData.degree);
+    }
   }
 
   getData = () => {
