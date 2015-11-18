@@ -43,39 +43,30 @@ export default class Work extends Component {
       }
     }
 
+    const initData = this.props.initData;
+
     return (
       <ul>
         <li className="icon-delete-container">
           <IconButton iconClassName="material-icons" tooltip="Xóa" onClick={this.props.onDelete}>delete</IconButton>
         </li>
         <li style={{width: '13%'}}>
-          <SelectField ref="StartYear" {...props.startYear}/>
+          <SelectField initData={initData && initData.startYear ? initData.startYear : null} ref="StartYear" {...props.startYear}/>
         </li>
         <li style={{width: '13%'}}>
-          <SelectField ref="EndYear" {...props.endYear}/>
+          <SelectField initData={initData && initData.endYear ? initData.endYear : null} ref="EndYear" {...props.endYear}/>
         </li>
         <li style={{width: '20%'}}>
-          <TextField ref="Company" {...props.company}/>
+          <TextField initData={initData && initData.company ? initData.company : null} ref="Company" {...props.company}/>
         </li>
         <li style={{width: '18%'}}>
-          <TextField ref="Major" {...props.major}/>
+          <TextField initData={initData && initData.major ? initData.major : null} ref="Major" {...props.major}/>
         </li>
         <li style={{width: '18%'}}>
-          <TextField ref="Position" {...props.position}/>
+          <TextField initData={initData && initData.position ? initData.position : null} ref="Position" {...props.position}/>
         </li>
       </ul>
     );
-  }
-
-  componentDidMount = () => {
-    const initData = this.props.initData;
-    if (initData) {
-      this.refs.StartYear.setValue(initData.startYear);
-      this.refs.EndYear.setValue(initData.endYear);
-      this.refs.Company.setValue(initData.company);
-      this.refs.Major.setValue(initData.major);
-      this.refs.Position.setValue(initData.position);
-    }
   }
 
   getData = () => {

@@ -34,33 +34,25 @@ export default class HighSchoolCA extends Component {
 
     }
 
+    const initData = this.props.initData;
+
     return (
       <ul>
         <li className="icon-delete-container">
           <IconButton iconClassName="material-icons" tooltip="Xóa" onClick={this.props.onDelete}>delete</IconButton>
         </li>
         <li style={{width: '15%'}}>
-          <SelectField ref="StartYear" {...props.startYear} />
+          <SelectField initData={initData && initData.startYear ? initData.startYear : null} ref="StartYear" {...props.startYear} />
         </li>
         <li style={{width: '15%'}}>
-          <SelectField ref="EndYear" {...props.endYear} />
+          <SelectField initData={initData && initData.endYear ? initData.endYear : null} ref="EndYear" {...props.endYear} />
         </li>
         <li style={{width: '50%'}}>
-          <TextField ref="Description" {...props.description}/>
+          <TextField initData={initData && initData.description ? initData.description : null} ref="Description" {...props.description}/>
         </li>
       </ul>
     );
   }
-
-  componentDidMount = () => {
-    const initData = this.props.initData;
-    if (initData) {
-      this.refs.StartYear.setValue(initData.startYear);
-      this.refs.EndYear.setValue(initData.endYear);
-      this.refs.Description.setValue(initData.description);
-    }
-  }
-
 
   getData = () => {
     const startYear = this.refs.StartYear.getValue(),

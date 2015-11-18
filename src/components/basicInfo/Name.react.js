@@ -50,28 +50,21 @@ export default class Name extends Component {
       event.target.value = result;
     }
 
+    const initData = this.props.initData;
+
     return (
       <ul style={style.ul}>
         <li style={style.li}>
-            <TextField ref="FirstName" {...props.firstName} onBlur={onBlurInput}/>
+            <TextField initData={initData && initData.firstName ? initData.firstName : null} ref="FirstName" {...props.firstName} onBlur={onBlurInput}/>
         </li>
         <li style={style.li}>
-            <TextField ref="MidName" {...props.midName} onBlur={onBlurInput}/>
+            <TextField initData={initData && initData.midName ? initData.middle : null} ref="MidName" {...props.midName} onBlur={onBlurInput}/>
         </li>
         <li style={style.li}>
-            <TextField ref="LastName" {...props.lastName} onBlur={onBlurInput}/>
+            <TextField initData={initData && initData.lastName ? initData.lastName : null} ref="LastName" {...props.lastName} onBlur={onBlurInput}/>
         </li>
       </ul>
     );
-  }
-
-  componentDidMount = () => {
-    const initData = this.props.initData;
-    if (initData) {
-      this.refs.FirstName.setValue(initData.firstName);
-      this.refs.MidName.setValue(initData.midName);
-      this.refs.LastName.setValue(initData.lastName);
-    }
   }
 
   getData = () => {

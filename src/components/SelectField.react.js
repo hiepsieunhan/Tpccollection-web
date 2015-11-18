@@ -7,7 +7,10 @@ export default class SelectField extends Component {
     onChange: PropTypes.func,
     menuItems: PropTypes.array.isRequired,
     label: PropTypes.string.isRequired,
-    initData: PropTypes.string
+    initData: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
   }
 
   state = {

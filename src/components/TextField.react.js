@@ -12,7 +12,11 @@ export default class TextField extends Component {
     multiLine: PropTypes.bool,
     label: PropTypes.string,
     hint: PropTypes.string,
-    validate: PropTypes.func
+    validate: PropTypes.func,
+    initData: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
   };
 
   state = {
@@ -29,7 +33,7 @@ export default class TextField extends Component {
         hintText={this.props.hint || ''}
         errorText={(this.state.isRequired ? this.state.requireMessage : null) || this.state.formatErrMessage}
         floatingLabelText={this.props.label || ''}
-        onChange={this.handleIput}
+        onChange={this.handleInput}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         fullWidth={True}
@@ -38,7 +42,15 @@ export default class TextField extends Component {
     );
   }
 
-  handleIput = (event) => {
+  componentDidMount = () => {
+    const initData = this.props.initData;
+    if (initData) {
+      this.refs.TextField.setValue(initData);
+      this.handleInput();
+    }
+  }
+
+  handleInput = (event) => {
     const input = this.refs.TextField.getValue().trim();
     if (input !== '') {
       this.setState({requireMessage : ''});
@@ -49,10 +61,6 @@ export default class TextField extends Component {
     if (!this.props.validate) return;
     const formatErr = this.props.validate(input) ? '' : formatErrMessage;
     this.setState({formatErrMessage: formatErr});
-  }
-
-  setValue = (text) => {
-    this.refs.TextField.setValue(text);
   }
 
   getValue = () => {

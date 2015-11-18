@@ -42,34 +42,26 @@ export default class ContactInfo extends Component {
       }
     }
 
+    const initData = this.props.initData;
+
     return (
       <div>
         <ul>
           <li style={{width: '30%', marginRight: '20%'}}>
-            <TextField {...props.email} ref="Email"/>
+            <TextField initData={initData && initData.email ? initData.email : null} {...props.email} ref="Email"/>
           </li>
           <li style={{...style.li, width: '30%'}}>
-            <TextField {...props.phone} ref="Phone"/>
+            <TextField initData={initData && initData.phone ? initData.phone : null} {...props.phone} ref="Phone"/>
           </li>
         </ul>
         <div style={style.address}>
-          <TextField {...props.address} ref="Address"/>
+          <TextField initData={initData && initData.address ? initData.address : null}{...props.address} ref="Address"/>
         </div>
         <div style={style.socialUrl}>
-          <TextField {...props.socialUrl} ref="SocialUrl"/>
+          <TextField initData={initData && initData.socialUrl ? initData.socialUrl : null} {...props.socialUrl} ref="SocialUrl"/>
         </div>
       </div>
     );
-  }
-
-  componentDidMount = () => {
-    const initData = this.props.initData;
-    if (initData) {
-      this.refs.Email.setValue(initData.email);
-      this.refs.Phone.setValue(initData.phone);
-      this.refs.Address.setValue(initData.address);
-      this.refs.SocialUrl.setValue(initData.socialUrl);
-    }
   }
 
   getData = () => {

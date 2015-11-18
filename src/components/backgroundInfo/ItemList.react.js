@@ -7,7 +7,7 @@ import Work from './Work.react';
 import Utils from '../../utils/supportedFuncs';
 
 const initListRef = data => {
-  const length = data ? data.length : 0;
+  const length = data && data.length ? data.length : 0;
   let list = [];
   for (let i = 0; i < length; i++) {
     list.push(Utils.generateId());

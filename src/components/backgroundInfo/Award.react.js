@@ -3,22 +3,8 @@ import SelectField from '../SelectField.react';
 import Utils from '../../utils/supportedFuncs';
 import { IconButton } from 'material-ui';
 
-
-export default class Award extends Component {
-
-  static propTypes = {
-    onDelete: PropTypes.func.isRequired,
-    initData: PropTypes.object
-  }
-
-  state = {
-    awards: [],
-    subjects: []
-  }
-
-  render() {
-
-    const data = {
+const getInitData = () => {
+  return {
       levels: [
         {payload: 'quocGia', text: 'Quốc gia'},
         {payload: 'quocTe', text: 'Quốc tế'}
@@ -47,7 +33,34 @@ export default class Award extends Component {
           ]
         }
       }
-    }
+  }
+}
+
+const getInitSubData = (initData) => {
+  const data = getInitData();
+  let result = {
+    awards: [],
+    subjects: []
+  }
+  if (initData && initData.level)
+    result = data.list[initData.level] || result;
+
+  return result;
+}
+
+
+export default class Award extends Component {
+
+  static propTypes = {
+    onDelete: PropTypes.func.isRequired,
+    initData: PropTypes.object
+  }
+
+  state = getInitSubData(this.props.initData)
+
+  render() {
+
+    const data = getInitData();
 
     const that = this;
 
@@ -72,35 +85,27 @@ export default class Award extends Component {
 
     }
 
+    const initData = this.props.initData;
+
     return (
       <ul>
         <li className="icon-delete-container">
           <IconButton iconClassName="material-icons" tooltip="Xóa" onClick={this.props.onDelete}>delete</IconButton>
         </li>
         <li style={{width: '15%'}}>
-          <SelectField ref="Level" {...props.level}/>
+          <SelectField initData={initData && initData.level ? initData.level : null} ref="Level" {...props.level}/>
         </li>
         <li style={{width: '15%'}}>
-          <SelectField ref="Year" {...props.year}/>
+          <SelectField initData={initData && initData.year ? initData.year : null} ref="Year" {...props.year}/>
         </li>
         <li style={{width: '25%'}}>
-          <SelectField ref="Subject" {...props.subject}/>
+          <SelectField initData={initData && initData.subject ? initData.subject : null} ref="Subject" {...props.subject}/>
         </li>
         <li style={{width: '25%'}}>
-          <SelectField ref="Award" {...props.award}/>
+          <SelectField initData={initData && initData.award ? initData.award : null} ref="Award" {...props.award}/>
         </li>
       </ul>
     );
-  }
-
-  componentDidMount = () => {
-    const initData = this.props.initData;
-    if (initData) {
-      this.refs.Level.setValue(initData.level);
-      this.refs.Year.setValue(initData.years);
-      this.refs.Subject.setValue(initData.subject);
-      this.refs.Award.setValue(initData.award);
-    }
   }
 
   levelOnChange = (data, value) => {
@@ -125,5 +130,4 @@ export default class Award extends Component {
         isValid: (level && year && subject && award ? true : false)
       }
   }
-
 }
