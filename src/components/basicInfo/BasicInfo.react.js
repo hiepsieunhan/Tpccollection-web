@@ -1,7 +1,7 @@
 import React, {
-                Component,
-                PropTypes
-              } from 'react';
+  Component,
+  PropTypes
+} from 'react';
 import Name from './Name.react';
 import SelectField from '../SelectField.react';
 import SchoolRole from './SchoolRole.react';
@@ -37,17 +37,15 @@ export default class BasicInfo extends Component {
     const True = true;
     const data = setUpData();
     const initData = this.props.initData;
-    const year = 1;// (initData && initData.year && this.state.isFirstRender) ? initData.year : null;
-    const mClass = 1;//(initData && initData.class && this.state.isFirstRender) ? initData.class : null;
 
     return (
       <div>
         <Name initData={initData && initData.name ? initData.name : null} ref="Name"/>
         <ul>
           <li style={{width: '30%', marginRight: '20%', paddingRight: '0%'}}>
-            <SelectField selectedIndex={year} ref="Year" menuItems={data.years} label="Niên Khóa" />
+            <SelectField initData={initData ? initData.year : null} ref="Year" menuItems={data.years} label="Niên Khóa" />
             <DatePicker fullWidth={True} ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
-            <SelectField selectedIndex={mClass} ref="Class" menuItems={data.classes} label="Lớp"/>
+            <SelectField initData={initData ? initData.class : null} ref="Class" menuItems={data.classes} label="Lớp"/>
           </li>
           <li>
             <SchoolRole initData={initData && initData.roles ? initData.roles : null} ref="SchoolRole"/>
@@ -61,11 +59,8 @@ export default class BasicInfo extends Component {
   componentDidMount = () => {
     const initData = this.props.initData;
     if (initData) {
-      this.refs.BirthDate.setDate(this.parseStringToDate(initData.birthDate));
+      if (initData.birthDate) this.refs.BirthDate.setDate(this.parseStringToDate(initData.birthDate));
     }
-    this.setState({
-      isFirstRender: false
-    });
   }
 
   getData = () => {

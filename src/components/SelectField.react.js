@@ -6,10 +6,12 @@ export default class SelectField extends Component {
   static propTypes = {
     onChange: PropTypes.func,
     menuItems: PropTypes.array.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    initData: PropTypes.string
   }
 
   state = {
+    selectValue: this.props.initData  ? this.props.initData : undefined
   }
 
   render() {

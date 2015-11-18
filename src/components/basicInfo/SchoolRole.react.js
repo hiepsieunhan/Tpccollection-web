@@ -1,6 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import mui, {List, Checkbox, ListItem} from 'material-ui';
 
+const getItems = () => {
+  return [
+      {payload: 'lopTruong', text: 'Lớp trưởng'},
+      {payload: 'lopPho', text: 'Lớp phó'},
+      {payload: 'biThu', text: 'Bí thư'}
+  ];
+}
+
 export default class SchoolRole extends Component {
 
   static propTypes = {
@@ -8,20 +16,16 @@ export default class SchoolRole extends Component {
   };
 
   state = {
-    roles: []
+    roles: this.props.initData ? this.props.initData : []
   }
 
   render() {
 
-    const items = [
-      {payload: 'lopTruong', text: 'Lớp trưởng'},
-      {payload: 'lopPho', text: 'Lớp phó'},
-      {payload: 'biThu', text: 'Bí thư'}
-    ];
+    const items = getItems();
 
     const listItems = items.map((item, index) => {
       return (
-        <ListItem key={index} primaryText={item.text} leftCheckbox={<Checkbox onCheck={this.checkBoxOnCheck.bind(this, item.payload)}/>} />
+        <ListItem key={index} primaryText={item.text} leftCheckbox={<Checkbox ref={index} onCheck={this.checkBoxOnCheck.bind(this, item.payload)}/>} />
       );
     });
 
@@ -35,9 +39,12 @@ export default class SchoolRole extends Component {
   componentDidMount = () => {
     const initData = this.props.initData;
     if (initData) {
-      this.setState({
-        roles: initData
-      })
+      const items = getItems();
+      for (let i = 0; i < items.length; i++) {
+        if (initData.indexOf(items[i].payload) != -1) {
+          this.refs[i].setChecked(true);
+        }
+      }
     }
   }
 
