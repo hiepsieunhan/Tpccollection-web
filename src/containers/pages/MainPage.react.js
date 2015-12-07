@@ -4,8 +4,9 @@ import SideBar from '../sideBar/SideBar.react';
 
 import { connect } from 'react-redux';
 import {
-  SAVE_FORM_TYPE,
-  saveFormData
+  FORM_TYPE,
+  saveFormData,
+  submitForm
 } from '../../actions/form';
 
 
@@ -20,7 +21,7 @@ class MainPage extends Component {
     return (
       <div className="div-wrapper">
         <SideBar/>
-        <Form ref="Form" onSubmit={this.onSubmit} showingPage={this.props.savedForm.showingPage} initData={this.props.savedForm.data}/>
+        <Form ref="Form" isSubmitting={this.props.savedForm.isSubmit} onSubmit={this.onSubmit} showingPage={this.props.savedForm.showingPage} initData={this.props.savedForm.data}/>
       </div>
     );
   }
@@ -29,14 +30,15 @@ class MainPage extends Component {
     const {
       dispatch
     } = this.props;
-    console.log('FUck!!');
-    console.log(this.refs);
     const data = this.refs.Form.getData().data;
-    dispatch(saveFormData(data, SAVE_FORM_TYPE.NEW));
+    dispatch(saveFormData(data, FORM_TYPE.NEW));
   }
 
   onSubmit = (data) => {
-    console.log('SubmitForm!!!!');
+    const {
+      dispatch
+    } = this.props;
+    dispatch(submitForm(data, FORM_TYPE.NEW));
   }
 
 }

@@ -1,9 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import TextField from '../../components/TextField.react';
 import Utils from '../../utils/supportedFuncs';
 import { RaisedButton } from 'material-ui';
 
-export default class EditInfoPage extends Component {
+import { connect } from 'react-redux';
+import {
+  GET_EDIT_LINK,
+  getEditLink
+} from '../../actions/email';
+
+
+class EditInfoPage extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+    state: PropTypes.object
+  }
 
   render() {
 
@@ -38,7 +50,18 @@ export default class EditInfoPage extends Component {
 
   submitEmail = () => {
     let email = this.refs.Email.getValue();
-    console.log(email);
+    const {
+      dispatch
+    } = this.props;
+    dispatch(getEditLink(email));
   }
 
 }
+
+const select = state => {
+  return {
+    state: state.getInfo
+  }
+}
+
+export default connect(select)(EditInfoPage);

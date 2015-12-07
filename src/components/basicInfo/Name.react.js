@@ -58,7 +58,7 @@ export default class Name extends Component {
             <TextField initData={initData && initData.firstName ? initData.firstName : null} ref="FirstName" {...props.firstName} onBlur={onBlurInput}/>
         </li>
         <li style={style.li}>
-            <TextField initData={initData && initData.midName ? initData.middle : null} ref="MidName" {...props.midName} onBlur={onBlurInput}/>
+            <TextField initData={initData && initData.midName ? initData.midName : null} ref="MidName" {...props.midName} onBlur={onBlurInput}/>
         </li>
         <li style={style.li}>
             <TextField initData={initData && initData.lastName ? initData.lastName : null} ref="LastName" {...props.lastName} onBlur={onBlurInput}/>

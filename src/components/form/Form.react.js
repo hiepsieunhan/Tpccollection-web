@@ -14,6 +14,7 @@ export default class Form extends Component {
     onSubmit: PropTypes.func.isRequired,
     data: PropTypes.object,
     showingPage: PropTypes.oneOf(['form', 'thank']),
+    isSubmitting: PropTypes.bool,
     initData: PropTypes.object
   }
 
@@ -54,7 +55,7 @@ export default class Form extends Component {
           </CardContainer>
           {breakElement}
 
-          <RaisedButton label="Gửi lên" onClick={this.submit} backgroundColor="#43A047" labelColor="#FFF"/>
+          <RaisedButton disabled={this.props.isSubmitting} label="Gửi lên" onClick={this.submit} backgroundColor="#43A047" labelColor="#FFF"/>
         </div>
         <div id="thank-page" style={style.thank}>
           <Thank/>
