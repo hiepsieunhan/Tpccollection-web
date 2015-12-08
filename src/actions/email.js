@@ -37,10 +37,12 @@ export const checkEmail = (email, formType, callback) => dispatch => {
   dispatch(requestCheckEmail(formType));
   $.ajax({
     method: 'GET',
-    url: `${server.url}/user/check/${email}`;
+    url: `${server.url}/user/check/${email}`
   }).done(data => {
-    dispatch(finishCheckEmail(true, formType));
-    callback();
+    dispatch(finishCheckEmail(!data.status, formType));
+    if (!data.status) {
+      callback();
+    }
   }).fail(() => {
     dispatch(finishCheckEmail(false, formType));
   });

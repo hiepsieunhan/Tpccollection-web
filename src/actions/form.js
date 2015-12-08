@@ -1,5 +1,5 @@
 import thunk from 'redux-thunk';
-import checkEmail from './email';
+import { checkEmail } from './email';
 import $ from 'jquery';
 import server from './serverConfig';
 
@@ -44,7 +44,7 @@ const finishSubmitForm = (isSuccess, submitType) => {
   }
 }
 
-const submitNewForm = (data, dispatch) => {
+const submitNewForm = (data) => dispatch => {
   dispatch(requestSubmitForm(FORM_TYPE.NEW));
   $.ajax({
     method: 'POST',
@@ -57,7 +57,7 @@ const submitNewForm = (data, dispatch) => {
   });
 }
 
-const submitEditedForm = (data, dispatch, id) => {
+const submitEditedForm = (data, id) => dispatch => {
   dispatch(requestSubmitForm(FORM_TYPE.EDIT));
   $.ajax({
     method: 'PUT',
@@ -82,7 +82,7 @@ export const submitForm = (data, formType, id = null) => dispatch => {
   if (callback) {
     dispatch(
       checkEmail(email, formType, () => {
-        dispatch(callback(data, dispatch, id));
+        dispatch(callback(data, id));
       })
     );
   }
@@ -91,7 +91,7 @@ export const submitForm = (data, formType, id = null) => dispatch => {
 const requestGetUserData = () => {
   return {
     type: GET_USER_DATA,
-    start: trues
+    start: true
   }
 }
 

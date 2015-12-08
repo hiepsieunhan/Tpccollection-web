@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Form from '../../components/form/Form.react';
 import SideBar from '../sideBar/SideBar.react';
 
 import { connect } from 'react-redux';
@@ -18,12 +19,11 @@ class EditPage extends Component {
   }
 
   render() {
-    let userId = this.props.params.id;
-    console.log(userId);
+    const form = this.props.savedForm.isLoading ? null : <Form ref="Form" isSubmitting={this.props.savedForm.isSubmit} onSubmit={this.onSubmit} showingPage={this.props.savedForm.showingPage} initData={this.props.savedForm.data}/>;
     return (
       <div className="div-wrapper">
         <SideBar/>
-        <Form ref="Form" isSubmitting={this.props.savedForm.isSubmit} onSubmit={this.onSubmit} showingPage={this.props.savedForm.showingPage} initData={this.props.savedForm.data}/>
+        {form}
       </div>
     );
   }
