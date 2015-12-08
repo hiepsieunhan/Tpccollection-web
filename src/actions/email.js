@@ -1,5 +1,6 @@
 import thunk from 'redux-thunk';
 import $ from 'jquery';
+import server from './serverConfig';
 
 /*
   action types
@@ -31,12 +32,12 @@ const finishCheckEmail = (isSuccess, formType) => {
 
 
 // checkEmail before upload data to server
-export const checkEmail = (email, formType, callback, dispatch) => {
+export const checkEmail = (email, formType, callback) => dispatch => {
   // do stuff
   dispatch(requestCheckEmail(formType));
   $.ajax({
     method: 'GET',
-    url: 'https://api.myjson.com/bins/3mcwl'
+    url: `${server.url}/user/check/${email}`;
   }).done(data => {
     dispatch(finishCheckEmail(true, formType));
     callback();
@@ -64,8 +65,11 @@ export const getEditLink = email => dispatch => {
   // send email to server to get link
   dispatch(requestGetEditLink());
   $.ajax({
-    method: 'GET',
-    url: 'https://api.myjson.com/bins/3mcwl'
+    method: 'POST',
+    url: `${server.url}/user/send-email`,
+    data: {
+      email: email
+    }
   }).done(data => {
     dispatch(finishGetEditLink(true));
   }).fail(() => {

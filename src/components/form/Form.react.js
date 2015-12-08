@@ -86,7 +86,10 @@ export default class Form extends Component {
 
   submit = () => {
     const formData = this.getData();
-    this.props.onSubmit(formData.data);
+    if (!formData.isValid)
+      alert('Please fill in all the required fields');
+    else
+      this.props.onSubmit(formData.data);
   }
 
 }

@@ -1,25 +1,66 @@
 import React, { Component, PropTypes } from 'react';
 import SideBar from '../sideBar/SideBar.react';
 
-export default class EditPage extends Component {
+import { connect } from 'react-redux';
+import {
+  FORM_TYPE,
+  saveFormData,
+  submitForm,
+  getUserData
+} from '../../actions/form';
+
+class EditPage extends Component {
 
   static propTypes = {
-    params: PropTypes.object
+    params: PropTypes.object,
+    dispatch: PropTypes.func,
+    savedForm: PropTypes.object
   }
 
   render() {
     let userId = this.props.params.id;
     console.log(userId);
     return (
-      <div>
+      <div className="div-wrapper">
         <SideBar/>
+        <Form ref="Form" isSubmitting={this.props.savedForm.isSubmit} onSubmit={this.onSubmit} showingPage={this.props.savedForm.showingPage} initData={this.props.savedForm.data}/>
       </div>
     );
   }
 
-  componentWillUnmount = () => {
-    console.log('EditPage unmount');
+  componentWillMount = () => {
+    let data = this.props.savedForm.data;
+    const {
+      dispatch
+    } = this.props;
+    const userId = this.props.params.id;
+    if (!data) {
+      dispatch(getUserData(userId));
+    }
   }
 
+  componentWillUnmount = () => {
+    const {
+      dispatch
+    } = this.props;
+    const data = this.refs.Form.getData().data;
+    dispatch(saveFormData(data, FORM_TYPE.EDIT));
+  }
+
+  onSubmit = (data) => {
+    const {
+      dispatch
+    } = this.props;
+    dispatch(submitForm(data, FORM_TYPE.EDIT, this.props.params.id));
+  }
 
 }
+
+
+const select = state => {
+  return {
+    savedForm: state.form.editForm
+  }
+}
+
+export default connect(select)(EditPage);

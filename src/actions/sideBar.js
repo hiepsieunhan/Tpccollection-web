@@ -1,5 +1,6 @@
 import thunk from 'redux-thunk';
 import $ from 'jquery';
+import server from './serverConfig';
 
 /*
   action types
@@ -34,7 +35,8 @@ export const reload = () => dispatch => {
   dispatch(requestReload());
   $.ajax({
     method: 'GET',
-    url: 'https://api.myjson.com/bins/3mcwl'
+    //url: 'https://api.myjson.com/bins/3mcwl'
+    url: `${server.url}/side-bar`
   }).done(data => {
     dispatch(finishReload(true, data));
   }).fail(() => {
@@ -58,7 +60,8 @@ const finishReloadClasses = (status, classes, year) => {
 export const reloadClasses = (year) => (dispatch, getState) => {
   $.ajax({
     method: 'GET',
-    url: 'https://api.myjson.com/bins/3v59h'
+    //url: 'https://api.myjson.com/bins/3v59h'
+    url: `${server.url}/side-bar/${year}`
   }).done(data => {
     dispatch(finishReloadClasses(true, data, year));
   }).fail(() => {
@@ -83,16 +86,11 @@ const finishReloadStudents = (status, students, year, class_) => {
 export const reloadStudents = (year, class_) => (dispatch, getState) => {
   $.ajax({
     method: 'GET',
-    url: 'https://api.myjson.com/bins/3lb3h'
+    //url: 'https://api.myjson.com/bins/3lb3h'
+    url: `${server.url}/side-bar/${year}/${class_}`
   }).done(data => {
     dispatch(finishReloadStudents(true, data, year, class_));
   }).fail(() => {
     dispatch(finishReloadStudents(false));
   });
 }
-
-export const sendUserForm = (data, isValid) => (dispatch) => {
-  console.log(data);
-  console.log(isValid);
-}
-

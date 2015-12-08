@@ -8,7 +8,7 @@ import {
   CHECK_EMAIL
 } from '../actions/email';
 
-const setData = (type, data) => {
+const setData = (state, type, data) => {
   if (type === FORM_TYPE.NEW) {
     return {...state, newForm: {...state.newForm, data: data}}
   } else if (action.submitType === FORM_TYPE.EDIT) {
@@ -17,7 +17,7 @@ const setData = (type, data) => {
   return state;
 }
 
-const setShowingPage = (type, newPage) => {
+const setShowingPage = (state, type, newPage) => {
   if (type === FORM_TYPE.NEW) {
     return {...state, newForm: {...state.newForm, showingPage: newPage}}
   } else if (action.submitType === FORM_TYPE.EDIT) {
@@ -26,7 +26,7 @@ const setShowingPage = (type, newPage) => {
   return state;
 }
 
-const setIsUpload = (type, newValue) => {
+const setIsUpload = (state, type, newValue) => {
   if (type === FORM_TYPE.NEW) {
     return {...state, newForm: {...state.newForm, isUpload: newValue}}
   } else if (action.submitType === FORM_TYPE.EDIT) {
@@ -51,19 +51,19 @@ const formReducer = (state = {
   switch (action.type) {
 
     case SAVE_FORM:
-      return setData(action.saveType, action.data);
+      return setData(state, action.saveType, action.data);
       break;
 
     case SUBMIT_FORM:
       if (action.start) {
         // set isSubmitting to true to prevent user click to submit button
-        return setIsUpload(action.submitType, true);
+        return setIsUpload(state, action.submitType, true);
       } else if (action.finish) {
         // reset isSubmitting to false
-        return setIsUpload(action.submitType, false);
+        return setIsUpload(state, action.submitType, false);
         // if success, move to thank page else alert a message
         if (action.isSuccess) {
-          return setShowingPage(action.submitType, 'thank');
+          return setShowingPage(state, action.submitType, 'thank');
         } else {
           alert('Fail to submit form!');
         }
@@ -72,12 +72,12 @@ const formReducer = (state = {
 
     case CHECK_EMAIL:
       if (action.start) {
-        return setIsUpload(action.submitType, true);
+        return setIsUpload(state, action.submitType, true);
       } else if (action.finish) {
         if (!action.isSuccess) {
           alert('Your email might be used by the other, please use other email for submitting!');
         }
-        return setIsUpload(action.submitType, false);
+        return setIsUpload(state, action.submitType, false);
       }
       break;
   }
