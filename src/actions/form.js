@@ -73,19 +73,16 @@ const submitEditedForm = (data, id) => dispatch => {
 export const submitForm = (data, formType, id = null) => dispatch => {
   const email = data.contactInfo.email;
   // submit new form
-  let callback = null;
-  if (formType === FORM_TYPE.NEW)
-    callback = submitNewForm;
-  else
-    callback = submitEditedForm;
-
-  if (callback) {
+  if (formType === FORM_TYPE.NEW) {
     dispatch(
       checkEmail(email, formType, () => {
-        dispatch(callback(data, id));
+        dispatch(submitNewForm(data));
       })
     );
+  } else if (formType === FORM_TYPE.EDIT) {
+    dispatch(submitEditedForm(data, id));
   }
+
 }
 
 const requestGetUserData = () => {
