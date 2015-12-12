@@ -42,26 +42,18 @@ export default class Name extends Component {
       }
     }
 
-    const onBlurInput = (event) => {
-      let values = event.target.value.trim().split(/\s+/g);
-      let result = values.map(value => {
-        return value.charAt(0).toUpperCase() + value.slice(1);
-      }).join(' ');
-      event.target.value = result;
-    }
-
     const initData = this.props.initData;
 
     return (
       <ul style={style.ul}>
         <li style={style.li}>
-            <TextField initData={initData && initData.firstName ? initData.firstName : null} ref="FirstName" {...props.firstName} onBlur={onBlurInput}/>
+            <TextField initData={initData && initData.firstName ? initData.firstName : null} ref="FirstName" {...props.firstName} onBlur={this.onBlurInput}/>
         </li>
         <li style={style.li}>
-            <TextField initData={initData && initData.midName ? initData.midName : null} ref="MidName" {...props.midName} onBlur={onBlurInput}/>
+            <TextField initData={initData && initData.midName ? initData.midName : null} ref="MidName" {...props.midName} onBlur={this.onBlurInput}/>
         </li>
         <li style={style.li}>
-            <TextField initData={initData && initData.lastName ? initData.lastName : null} ref="LastName" {...props.lastName} onBlur={onBlurInput}/>
+            <TextField initData={initData && initData.lastName ? initData.lastName : null} ref="LastName" {...props.lastName} onBlur={this.onBlurInput}/>
         </li>
       </ul>
     );
@@ -81,6 +73,20 @@ export default class Name extends Component {
 
   validateData = (data) => {
     return data.firstName && data.lastName ? true : false;
+  }
+
+  onBlurInput = (event) => {
+    let values = event.target.value.trim().split(/\s+/g);
+    let result = values.map(value => {
+      let result = '';
+      for (var i = 0; i < value.length; i++) {
+        if (i == 0) result += value.charAt(i).toUpperCase();
+          else result += value.charAt(i).toLowerCase();
+      }
+      return result;
+      //return value.charAt(0).toUpperCase() + value.slice(1);
+    }).join(' ');
+    event.target.value = result;
   }
 
 }

@@ -23,7 +23,7 @@ export default class ContactInfo extends Component {
       },
       address: {
         required: true,
-        label: 'Địa chỉ hiện tại',
+        label: 'Nơi ở hiện tại ',
         multiLine: true
       },
       socialUrl: {

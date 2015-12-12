@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import mui, { TextField as MuiTextField} from 'material-ui';
 
-const requireMessage = 'This field is required';
-const formatErrMessage = 'The format is not correct';
+const requireMessage = 'Thông tin này là bắt buộc';
+const formatErrMessage = 'Định dạng thông tin không chính xác';
 
 export default class TextField extends Component {
 

@@ -3,9 +3,10 @@ import mui, {List, Checkbox, ListItem} from 'material-ui';
 
 const getItems = () => {
   return [
-      {payload: 'lopTruong', text: 'Lớp trưởng'},
-      {payload: 'lopPho', text: 'Lớp phó'},
-      {payload: 'biThu', text: 'Bí thư'}
+      {payload: 'Lớp trưởng', text: 'Lớp trưởng'},
+      {payload: 'Lớp phó', text: 'Lớp phó'},
+      {payload: 'Bí thư/phó bí thư lớp', text: 'Bí thư/phó bí thư lớp'},
+      {payload: 'Bí thư/phó bí thư trường', text: 'Bí thư/phó bí thư trường'}
   ];
 }
 

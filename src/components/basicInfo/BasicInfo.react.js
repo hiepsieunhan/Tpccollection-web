@@ -8,17 +8,31 @@ import SchoolRole from './SchoolRole.react';
 import {DatePicker} from 'material-ui';
 import Utils from '../../utils/supportedFuncs';
 
+
 const setUpData = () => {
   let data = {};
 
   data.years = Utils.getListClassYear();
 
   data.classes = [
-    {payload: 'Toan', text: 'Toan'},
-    {payload: 'Ly', text: 'Ly'},
-    {payload: 'Hoa', text: 'Hoa'},
-    {payload: 'Tin', text: 'Tin'},
-    {payload: 'Sinh', text: 'Sinh'}
+    {payload: 'Chuyên Toán', text: 'Chuyên Toán'},
+    {payload: 'Chuyên Lý', text: 'Chuyên Lý'},
+    {payload: 'Chuyên Hóa', text: 'Chuyên Hóa'},
+    {payload: 'Chuyên Sinh', text: 'Chuyên Sinh'},
+    {payload: 'Chuyên Tin', text: 'Chuyên Tin'},
+    {payload: 'Chuyên Văn', text: 'Chuyên Văn'},
+    {payload: 'Chuyên Anh 1', text: 'Chuyên Anh 1'},
+    {payload: 'Chuyên Anh 2', text: 'Chuyên Anh 2'},
+    {payload: 'Chuyên Pháp', text: 'Chuyên Pháp'},
+    {payload: 'Song Ngữ 1', text: 'Song Ngữ 1'},
+    {payload: 'Song Ngữ 2', text: 'Song Ngữ 2'},
+    {payload: 'Chuyên Trung', text: 'Chuyên Trung'},
+    {payload: 'Chuyên Nga', text: 'Chuyên Nga'},
+    {payload: 'Chuyên Sử-Địa', text: 'Chuyên Sử-Địa'},
+    {payload: 'Tự Nhiên 1', text: 'Tự Nhiên 1'},
+    {payload: 'Tự Nhiên 2', text: 'Tự Nhiên 2'},
+    {payload: 'Xã Hội', text: 'Xã Hội'}
+
   ];
   return data;
 }
