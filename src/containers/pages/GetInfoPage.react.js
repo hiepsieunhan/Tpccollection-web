@@ -48,7 +48,7 @@ class EditInfoPage extends Component {
           Link để sửa thông tin sẽ được gửi tới địa chỉ email mà bạn cung cấp.
         </p>
         <div style={props.emailInputStyle}><TextField ref="Email"{...props.email}/> </div>
-        <RaisedButton label="Gửi" secondary onClick={this.submitEmail}/>
+        <RaisedButton disabled={this.props.state.isSubmitting} label="Gửi" secondary onClick={this.submitEmail}/>
         <p className="success-message" style={style.success}>
           Đường link để sửa thông tin đã được gửi vào email của bạn.
         </p>

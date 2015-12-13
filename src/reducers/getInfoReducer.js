@@ -11,8 +11,8 @@ const getInfoReducer = (state = {
     case GET_EDIT_LINK:
       if (action.start) {
         return {
-          ...state,
           isSubmitting: true,
+          showingMessge: null
         }
       } else if (action.finish) {
         return {
