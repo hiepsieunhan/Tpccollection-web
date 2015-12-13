@@ -33,6 +33,11 @@ class EditInfoPage extends Component {
       }
     }
 
+    const style = {
+      success: (this.props.state.showingMessge === 'success') ? {} : {display: 'none'},
+      error: (this.props.state.showingMessge === 'error') ? {} : {display: 'none'}
+    }
+
     return (
       <div className="get-info-container">
         <h1> Sửa thông tin  </h1>
@@ -44,12 +49,19 @@ class EditInfoPage extends Component {
         </p>
         <div style={props.emailInputStyle}><TextField ref="Email"{...props.email}/> </div>
         <RaisedButton label="Gửi" secondary onClick={this.submitEmail}/>
+        <p className="success-message" style={style.success}>
+          Đường link để sửa thông tin đã được gửi vào email của bạn.
+        </p>
+        <p className="error-message" style={style.error}>
+          Không thành công, hãy kiếm tra lại địa chỉ email bạn vừa điền.
+        </p>
       </div>
     );
   }
 
   submitEmail = () => {
     let email = this.refs.Email.getValue();
+    if (!Utils.validateEmail(email)) return;
     const {
       dispatch
     } = this.props;

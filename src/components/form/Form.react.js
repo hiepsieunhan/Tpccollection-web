@@ -57,7 +57,7 @@ export default class Form extends Component {
 
           <RaisedButton disabled={this.props.isSubmitting} label="Gửi lên" onClick={this.submit} backgroundColor="#43A047" labelColor="#FFF"/>
         </div>
-        <div id="thank-page" style={style.thank}>
+        <div className="main-container thank-page" style={style.thank}>
           <Thank/>
         </div>
       </div>

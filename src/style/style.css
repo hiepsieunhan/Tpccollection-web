@@ -112,14 +112,6 @@ for submit form
   font-style: italic;
 }
 
-:global(#thank-page) {
-  display: block;
-  width: 40%;
-  position: absolute;
-  left: 30%;
-  top: 200px;
-}
-
 /**
 ============================================
 for home page
@@ -205,25 +197,52 @@ for edit page
 
 :global(.get-info-container) {
   display: block;
-  width: 500px;
-  padding: 20px;
+  width: 550px;
+  padding: 30px;
   position: absolute;
   top: 100px;
-  left: 400px;
+  left: 350px;
   box-shadow: 1px 1px 1px 1px #BBBBBB;
 }
 
 :global(.get-info-container h1) {
-  font-weight: 500;
-  font-size: 30px;
+  font-size: 40px;
   color: #00bcd4;
   margin: 10px 0 20px;
+  font-style: italic;
 }
 
 :global(.get-info-container p) {
   text-align: justify;
 }
 
+:global(.success-message) {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  padding: 15px;
+}
+
+:global(.error-message) {
+  color: #D8000C;
+  background-color: #FFBABA;
+  padding: 15px;
+}
+
+/**
+============================================
+for thank page
+============================================
+**/
+
+:global(.thank-page h1) {
+  color: #00bcd4;
+  font-style: italic;
+  font-size: 40px;
+}
+
+:global(.thank-page) {
+  text-align: center;
+}
 
 /**
 ============================================
