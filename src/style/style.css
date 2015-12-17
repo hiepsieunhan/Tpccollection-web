@@ -16,6 +16,11 @@ li {
   margin-right: 2%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 :global(.div-wrapper) {
   padding: 0;
   margin: 0;
