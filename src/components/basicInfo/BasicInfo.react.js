@@ -31,8 +31,9 @@ const setUpData = () => {
     {payload: 'Chuyên Sử-Địa', text: 'Chuyên Sử-Địa'},
     {payload: 'Tự Nhiên 1', text: 'Tự Nhiên 1'},
     {payload: 'Tự Nhiên 2', text: 'Tự Nhiên 2'},
-    {payload: 'Xã Hội', text: 'Xã Hội'}
-
+    {payload: 'Xã Hội', text: 'Xã Hội'},
+    {payload: 'B1', text: 'B1'},
+    {payload: 'B2', text: 'B2'}
   ];
   return data;
 }
@@ -58,7 +59,7 @@ export default class BasicInfo extends Component {
         <ul>
           <li style={{width: '30%', marginRight: '20%', paddingRight: '0%'}}>
             <SelectField initData={initData ? initData.year : null} ref="Year" menuItems={data.years} label="Niên Khóa" />
-            <DatePicker fullWidth={True} ref="BirthDate" floatingLabelText="Ngày sinh" mode="landscape"/>
+            <DatePicker fullWidth={True} ref="BirthDate" floatingLabelText="Ngày sinh (mm-dd-yyyy)" mode="landscape"/>
             <SelectField initData={initData ? initData.class : null} ref="Class" menuItems={data.classes} label="Lớp"/>
           </li>
           <li>

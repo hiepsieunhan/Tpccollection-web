@@ -18,7 +18,7 @@ const getInitData = () => {
             {payload: 'Lý', text: 'Lý'},
             {payload: 'Hóa', text: 'Hóa'},
             {payload: 'Tin', text: 'Tin'},
-            {payload: 'Sinh ', text: 'Sinh '},
+            {payload: 'Sinh', text: 'Sinh'},
             {payload: 'Văn', text: 'Văn'},
             {payload: 'Anh', text: 'Anh'},
             {payload: 'Pháp', text: 'Pháp'},
@@ -42,7 +42,7 @@ const getInitData = () => {
             {payload: 'Lý', text: 'Lý'},
             {payload: 'Hóa', text: 'Hóa'},
             {payload: 'Tin', text: 'Tin'},
-            {payload: 'Sinh ', text: 'Sinh'},
+            {payload: 'Sinh', text: 'Sinh'},
             {payload: 'Văn', text: 'Văn'},
             {payload: 'Anh', text: 'Anh'},
             {payload: 'Pháp', text: 'Pháp'},
@@ -66,7 +66,7 @@ const getInitData = () => {
             {payload: 'Lý', text: 'Lý'},
             {payload: 'Hóa', text: 'Hóa'},
             {payload: 'Tin', text: 'Tin'},
-            {payload: 'Sinh ', text: 'Sinh'}
+            {payload: 'Sinh', text: 'Sinh'}
           ],
           'awards': [
             {payload: 'Huy chương vàng', text: 'Huy chương vàng'},
