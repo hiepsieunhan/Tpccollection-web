@@ -77,4 +77,5 @@ export default class SideBarListClass extends Component {
     const { dispatch } = this.props;
     dispatch(reloadStudents(this.props.year, this.props.class_));
   }
+
 }

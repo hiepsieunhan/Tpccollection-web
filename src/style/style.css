@@ -132,14 +132,14 @@ for home page
 }
 
 :global(.main-notice) {
-  width: 80%;
+  width: 75%;
   display: block;
   margin: auto;
   font-size: 20;
   color: #FFF;
   background: rgba(0, 0, 0, 0.7);
   position: absolute;
-  padding: 15px;
+  padding: 40px 50px;
   font-style: italic;
   top: 150px;
   left: 100px;
