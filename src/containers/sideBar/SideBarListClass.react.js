@@ -19,9 +19,12 @@ export default class SideBarListClass extends Component {
 
     const currentClass = this.props.list[this.getId()] || [];
 
-    const studentList = currentClass.sort().map((student, index)=> {
+    const studentList = currentClass.sort((a, b) => {return a.fullName < b.fullName}).map((student, index)=> {
+      if (student.url.trim()) return (
+        <li key={index} className="highlight student"> <a style={{color: '#7986CB'}} href={student.url} target="_blank">{student.fullName}</a> </li>
+      );
       return (
-        <li key={index} className="highlight student"> {student} </li>
+        <li key={index} className="highlight student"> {student.fullName} </li>
       );
     });
 
@@ -74,4 +77,5 @@ export default class SideBarListClass extends Component {
     const { dispatch } = this.props;
     dispatch(reloadStudents(this.props.year, this.props.class_));
   }
+
 }

@@ -6,30 +6,73 @@ import { IconButton } from 'material-ui';
 const getInitData = () => {
   return {
       levels: [
-        {payload: 'quocGia', text: 'Quốc gia'},
-        {payload: 'quocTe', text: 'Quốc tế'}
+        {payload: 'Thành phố', text: 'Thành phố'},
+        {payload: 'Quốc Gia', text: 'Quốc Gia'},
+        {payload: 'Quốc Tế', text: 'Quốc Tế'}
       ],
       years: Utils.getListYear(),
       list: {
-        'quocTe': {
+        'Thành phố': {
           'subjects': [
-            {payload: 'toan', text: 'Toan'},
-            {payload: 'ly', text: 'Vat Ly'},
-            {payload: 'hoa', text: 'Hoa Hoc'},
+            {payload: 'Toán', text: 'Toán'},
+            {payload: 'Lý', text: 'Lý'},
+            {payload: 'Hóa', text: 'Hóa'},
+            {payload: 'Tin', text: 'Tin'},
+            {payload: 'Sinh', text: 'Sinh'},
+            {payload: 'Văn', text: 'Văn'},
+            {payload: 'Anh', text: 'Anh'},
+            {payload: 'Pháp', text: 'Pháp'},
+            {payload: 'Nga', text: 'Nga'},
+            {payload: 'Trung', text: 'Trung'},
+            {payload: 'Sử', text: 'Sử'},
+            {payload: 'Đia', text: 'Đia'},
+            {payload: 'Khác', text: 'Khác'}
           ],
           'awards': [
-            {payload: 'goldMedal', text: 'Huy chuong Vang'},
-            {payload: 'silveMedal', text: 'Huy chuong Bac'}
+            {payload: 'Giải nhất', text: 'Giải nhất'},
+            {payload: 'Giải nhì', text: 'Giải nhì'},
+            {payload: 'Giải ba', text: 'Giải ba'},
+            {payload: 'Giải Khuyến Khích', text: 'Giải Khuyến Khích'},
+            {payload: 'Không có giải', text: 'Không có giải'}
           ]
         },
-        'quocGia': {
+        'Quốc Gia': {
           'subjects': [
-            {payload: 'van', text: 'Ngu Van'},
-            {payload: 'anh', text: 'Tieng Anh'}
+            {payload: 'Toán', text: 'Toán'},
+            {payload: 'Lý', text: 'Lý'},
+            {payload: 'Hóa', text: 'Hóa'},
+            {payload: 'Tin', text: 'Tin'},
+            {payload: 'Sinh', text: 'Sinh'},
+            {payload: 'Văn', text: 'Văn'},
+            {payload: 'Anh', text: 'Anh'},
+            {payload: 'Pháp', text: 'Pháp'},
+            {payload: 'Nga', text: 'Nga'},
+            {payload: 'Trung', text: 'Trung'},
+            {payload: 'Sử', text: 'Sử'},
+            {payload: 'Đia', text: 'Đia'},
+            {payload: 'Khác', text: 'Khác'}
           ],
           'awards': [
-            {payload: 'firstPrice', text: 'Giai Nhat'},
-            {payload: 'secondPrice', text: 'Giai Nhi'}
+            {payload: 'Giải nhất', text: 'Giải nhất'},
+            {payload: 'Giải nhì', text: 'Giải nhì'},
+            {payload: 'Giải ba', text: 'Giải ba'},
+            {payload: 'Giải Khuyến Khích', text: 'Giải Khuyến Khích'},
+            {payload: 'Không có giải', text: 'Không có giải'}
+          ]
+        },
+        'Quốc Tế': {
+          'subjects': [
+            {payload: 'Toán', text: 'Toán'},
+            {payload: 'Lý', text: 'Lý'},
+            {payload: 'Hóa', text: 'Hóa'},
+            {payload: 'Tin', text: 'Tin'},
+            {payload: 'Sinh', text: 'Sinh'}
+          ],
+          'awards': [
+            {payload: 'Huy chương vàng', text: 'Huy chương vàng'},
+            {payload: 'Huy chương bạc', text: 'Huy chương bạc'},
+            {payload: 'Huy chương đồng', text: 'Huy chương đồng'},
+            {payload: 'Bằng khen', text: 'Bằng khen'}
           ]
         }
       }

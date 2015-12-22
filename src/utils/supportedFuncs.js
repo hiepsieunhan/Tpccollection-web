@@ -27,7 +27,7 @@ export default {
   },
 
   getListYear: () => {
-    const startYear = 1986,
+    const startYear = 1980,
       endYear = (new Date()).getFullYear();
     let result = [];
     for (var i = endYear; i >= startYear; i--) {
@@ -40,7 +40,7 @@ export default {
   },
 
   getListClassYear: () => {
-    const startYear = 1986,
+    const startYear = 1980,
       endYear = (new Date()).getFullYear();
     let result = [];
     for (var i = endYear; i >= startYear; i--) {

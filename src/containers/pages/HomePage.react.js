@@ -8,19 +8,18 @@ export default class HomePage extends Component {
     return (
       <div className="home-page">
         <div className="main-notice">
-          <p>
-            LỜI TRI ÂN ĐÃ CHÍNH THỨC QUAY TRỞ LẠI!
+          <p style={{textAlign: 'center'}}>
+            XÂY DỰNG CƠ SỞ DỮ LIỆU CỦA CÁC CỰU HỌC SINH CHUYÊN TRẦN PHÚ
           </p>
           <p>
-            Khi mà tiết trời đã vào thu, gió hiu hiu lạnh, lá cây chuyển vàng và đồng phục hóa màu thiên thanh,
-            hẳn ai đã và đang là học sinh Trần Phú đều bồi hồi nhớ tới những người thầy, người cô dìu dắt ta nên người dưới mái trường này.
+            Để góp phần thiết thực chuẩn bị 30 năm kỷ niệm thành lập trường Chuyên Trần Phú (1986-2016),
+            Ban Giám Hiệu nhà trường triển khai kế hoạch xây dựng cơ sở dữ liệu thông tin cá nhân của các cựu học sinh.
           </p>
           <p>
-             "Lời Tri Ân 2015" - chiếc cầu nối giữa các thế hệ thầy và trò Chuyên Trần Phú -
-             sẽ mang đến những tấm thiệp mà chứa đựng trong đó là tất cả tâm tư,
-            tình cảm của biết bao người con gửi tới những người cha, người mẹ thứ hai của mình.
-            Ngày Nhà Giáo Việt Nam 20-11 sẽ trở nên khó quên và ý nghĩa hơn bao giờ hết.
+            Quản lý phần thu thập thông tin cựu học sinh: cô Nguyễn Thị Ngà – phó hiệu trưởng <br/>
+            Phụ trách thực hiện: Hội Cựu Học Sinh Chuyên Trần Phú <a href="https://www.facebook.com/NKTPGLOBALNETWORK" target="_blank"> <u> NKTP GLOBAL </u> </a>
           </p>
+
         </div>
         <button className="pretty-button main-submit-info-button" onClick={this.navigateToSubmit}> ĐIỀN THÔNG TIN </button>
         <button className="pretty-button main-edit-info-button" onClick={this.navigateToEdit}> SỬA THÔNG TIN </button>

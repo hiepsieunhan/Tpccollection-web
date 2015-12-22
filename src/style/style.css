@@ -16,6 +16,11 @@ li {
   margin-right: 2%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 :global(.div-wrapper) {
   padding: 0;
   margin: 0;
@@ -94,6 +99,7 @@ for submit form
   padding-bottom: 100px;
   padding-top: 100px;
   margin: auto;
+  z-index: 9;
 }
 
 :global(.icon-delete-container) {
@@ -126,14 +132,14 @@ for home page
 }
 
 :global(.main-notice) {
-  width: 80%;
+  width: 75%;
   display: block;
   margin: auto;
   font-size: 20;
   color: #FFF;
   background: rgba(0, 0, 0, 0.7);
   position: absolute;
-  padding: 15px;
+  padding: 40px 50px;
   font-style: italic;
   top: 150px;
   left: 100px;
