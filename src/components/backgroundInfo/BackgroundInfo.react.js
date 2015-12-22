@@ -19,7 +19,7 @@ export default class BackgroundInfo extends Component {
             <ItemList initData={initData && initData.highSchoolCurricularActivity ? initData.highSchoolCurricularActivity : null} ref="HighSchoolCAList" type="HighSchoolCA" />
             <ItemList initData={initData && initData.highSchoolAchievement ? initData.highSchoolAchievement : null} ref="AwardList" type="Award" />
             <ItemList initData={initData && initData.degree ? initData.degree : null} ref="DegreeList" type="Degree" />
-            <ItemList initData={initData && initData.work ? initData.work : null} ref="WorkList" type="Work" />
+            <ItemList initData={initData && initData.working ? initData.working : null} ref="WorkList" type="Work" />
         </CardContainer>
       </div>
     );
