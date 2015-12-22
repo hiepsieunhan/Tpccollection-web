@@ -6,7 +6,7 @@ import swig from 'swig';
 const app = express();
 
 const isProduction = process.env.NODE_ENV === 'production';
-const port = parseInt(process.env.PORT, 10) || 5000;
+const port = parseInt(process.env.PORT, 10) || 80;
 const publicPath = path.resolve(__dirname, '../build');
 
 app.use(express.static(publicPath));
