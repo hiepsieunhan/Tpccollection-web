@@ -21,7 +21,9 @@ class MainPage extends Component {
     return (
       <div className="div-wrapper">
         <SideBar/>
-        <Form ref="Form" isSubmitting={this.props.savedForm.isSubmit} onSubmit={this.onSubmit} showingPage={this.props.savedForm.showingPage} initData={this.props.savedForm.data}/>
+        <div className="main-content">
+          <Form ref="Form" isSubmitting={this.props.savedForm.isSubmit} onSubmit={this.onSubmit} showingPage={this.props.savedForm.showingPage} initData={this.props.savedForm.data}/>
+        </div>
       </div>
     );
   }

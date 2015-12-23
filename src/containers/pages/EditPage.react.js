@@ -23,7 +23,9 @@ class EditPage extends Component {
     return (
       <div className="div-wrapper">
         <SideBar/>
-        {form}
+        <div className="main-content">
+          {form}
+        </div>
       </div>
     );
   }

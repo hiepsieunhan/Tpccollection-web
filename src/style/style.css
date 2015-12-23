@@ -92,13 +92,20 @@ for submit form
 ============================================
 **/
 
+:global(.main-content) {
+  display: block;
+  position: absolute;
+  left: 250px;
+}
+
 :global(.main-container) {
-  position: relative;
-  left: 90px;
-  width: 70%;
+  /*position: relative;
+  left: 90px;*/
+  width: 95%;
+  max-width: 950px;
+  margin: auto;
   padding-bottom: 100px;
   padding-top: 100px;
-  margin: auto;
   z-index: 9;
 }
 
@@ -131,6 +138,12 @@ for home page
   background-image: url("../images/tpc.jpg");
 }
 
+:global(.home-page-content) {
+  display: block;
+  position: relative;
+  padding-top: 150px;
+}
+
 :global(.main-notice) {
   width: 75%;
   display: block;
@@ -138,30 +151,30 @@ for home page
   font-size: 20;
   color: #FFF;
   background: rgba(0, 0, 0, 0.7);
-  position: absolute;
   padding: 40px 50px;
   font-style: italic;
-  top: 150px;
-  left: 100px;
   border-radius: 20px;
 }
 
+:global(.home-page-button-container) {
+  display: block;
+  margin: auto;
+  width: 370px;
+  margin-top: 150px;
+  position: relative;
+}
+
+
 :global(.main-submit-info-button) {
   position: absolute;
-  top: 500px; left: 32%;
+  left: 0;
+  bottom: 0;
 }
 
 :global(.main-edit-info-button) {
   position: absolute;
-  top: 500px; left: 47%;
-}
-
-:global(.main-submit-info-button:hover) {
-  top: 480px;
-}
-
-:global(.main-edit-info-button:hover) {
-  top: 480px;
+  right: 0;
+  bottom: 0;
 }
 
 :global(.pretty-button) {
@@ -203,11 +216,13 @@ for edit page
 
 :global(.get-info-container) {
   display: block;
-  width: 550px;
+  width: 60%;
+  max-width: 550px;
   padding: 30px;
-  position: absolute;
-  top: 100px;
-  left: 350px;
+  margin: auto;
+  margin-top: 100px;
+  /*top: 100px;
+  left: 350px;*/
   box-shadow: 1px 1px 1px 1px #BBBBBB;
 }
 
