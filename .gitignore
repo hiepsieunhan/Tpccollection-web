@@ -6,5 +6,6 @@ npm-debug.log
 /config/config.js
 /build/*
 !/build/images/
+build/
 
 !.keep

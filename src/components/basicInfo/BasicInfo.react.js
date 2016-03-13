@@ -28,6 +28,8 @@ const setUpData = () => {
     {payload: 'Song Ngữ 2', text: 'Song Ngữ 2'},
     {payload: 'Chuyên Trung', text: 'Chuyên Trung'},
     {payload: 'Chuyên Nga', text: 'Chuyên Nga'},
+    {payload: 'Chuyên Sử', text: 'Chuyên Sử'},
+    {payload: 'Chuyên Địa', text: 'Chuyên Địa'},
     {payload: 'Chuyên Sử-Địa', text: 'Chuyên Sử-Địa'},
     {payload: 'Tự Nhiên 1', text: 'Tự Nhiên 1'},
     {payload: 'Tự Nhiên 2', text: 'Tự Nhiên 2'},
